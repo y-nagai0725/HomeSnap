@@ -1,0 +1,45 @@
+{
+  "emmet.variables": {
+      "lang": "ja"
+  },
+  "ruby.intellisense": "rubyLocate",
+  "git.autofetch": true,
+  "editor.renderWhitespace": "all",
+  "editor.wordWrap": "on",
+  "liveSassCompile.settings.formats": [
+
+      {
+          "format": "expanded",
+          "extensionName": ".css",
+          "savePath": "/css"
+      }
+  ],
+  "editor.tabSize": 2,
+  "[scss]": {
+      "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+  },
+  "[css]": {
+      "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+  },
+  "liveSassCompile.settings.showOutputWindowOn": "Warning",
+  "editor.guides.bracketPairs": "active",
+  "editor.unicodeHighlight.includeComments": true,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "workbench.startupEditor": "none",
+  "csscomb.preset": ".vscode/csscomb.json",
+  "liveSassCompile.settings.autoprefix": [
+      "> 5%",
+      "last 2 versions"
+  ],
+  "liveSassCompile.settings.forceBaseDirectory": "",
+  "git.openRepositoryInParentFolders": "never",
+  "liveSassCompile.settings.excludeList": [
+      "/**/node_modules/**",
+      "/.vscode/**",
+      "/**/wp-admin/**",
+      "/**/wp-includes/**",
+  ]
+}
