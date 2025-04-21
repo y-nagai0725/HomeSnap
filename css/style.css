@@ -122,4 +122,39 @@ meter {
 /* Remove details summary webkit styles */
 ::-webkit-details-marker {
   display: none;
+}
+
+html {
+  font-size: 2.6666666667vw;
+}
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 1.3020833333vw;
+  }
+}
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 0.5208333333vw;
+  }
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  color: #443311;
+  line-height: 1;
+}
+
+a,
+button {
+  cursor: pointer;
+  display: block;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

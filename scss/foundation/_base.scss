@@ -1,1 +1,33 @@
 @use "../global" as *;
+
+html {
+  font-size: calc(10vw * calc(100 / 375));
+
+  @include tab {
+    font-size: calc(10vw * calc(100 / 768));
+  }
+
+  @include pc {
+    font-size: calc(10vw * calc(100 / 1920));
+  }
+}
+
+body {
+  font-family: $noto-sans;
+  font-weight: 400;
+  color: $black;
+  line-height: 1;
+}
+
+a,
+button {
+  cursor: pointer;
+  display: block;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}

@@ -1,1 +1,22 @@
 @use "../setting" as *;
+
+//タブレット用メディアクエリ
+@mixin tab {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+//PC用メディアクエリ
+@mixin pc {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+//PC Large用メディアクエリ
+@mixin pc-large {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}
