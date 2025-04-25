@@ -172,10 +172,10 @@ img {
   width: 100%;
   height: 100%;
 }
-.fv__path-1, .fv__path-2 {
+.fv__svg-path-1, .fv__svg-path-2 {
   fill: #f6f5f4;
 }
-.fv__path-3, .fv__path-4 {
+.fv__svg-path-3, .fv__svg-path-4 {
   fill: #dc3c36;
 }
 .fv__message-wrapper {

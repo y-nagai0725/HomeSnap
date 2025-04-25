@@ -1,8 +1,22 @@
-//GSAPメディアクエリ
+/**
+ * GSAPメディアクエリ
+ */
 const mm = gsap.matchMedia();
 
-//GSAPのeasing
+/**
+ * GSAPのeasing
+ */
 const gsapEasing = "power2.out";
+
+/**
+ * PCブレイクポイント
+ */
+const pcBreakPoint = 1024;
+
+/**
+ * TABブレイクポイント
+ */
+const tabBreakPoint = 768;
 
 const fv = document.querySelector(".fv");
 
@@ -10,10 +24,10 @@ const fvSvg = document.querySelector(".fv__svg");
 
 const fvMessage = document.querySelector(".fv__message");
 
-const path_1 = document.querySelector(".fv__path-1");
-const path_2 = document.querySelector(".fv__path-2");
-const path_3 = document.querySelector(".fv__path-3");
-const path_4 = document.querySelector(".fv__path-4");
+const svgPath_1 = document.querySelector(".fv__svg-path-1");
+const svgPath_2 = document.querySelector(".fv__svg-path-2");
+const svgPath_3 = document.querySelector(".fv__svg-path-3");
+const svgPath_4 = document.querySelector(".fv__svg-path-4");
 
 const beforePcBgSvgPath_1 = "M1912.83 -69.6496C2085.01 175.95 2095.69 868.6 1874.32 912.63C1652.94 956.65 1484.7 797.42 1511.26 452.34C1537.82 107.27 1141.73 173.86 1185.59 -69.6496C1229.44 -313.17 1740.64 -315.26 1912.83 -69.6496Z";
 const beforePcBgSvgPath_2 = "M434.598 756.65C408.033 1101.73 804.12 1035.14 760.262 1278.65C716.413 1522.17 205.207 1524.26 33.0224 1278.65C-139.142 1033.05 -149.827 340.39 71.5435 296.37C292.914 252.34 461.163 411.58 434.598 756.65Z";
@@ -45,162 +59,144 @@ const afterSpBgSvgPath_2 = "M447 333C446 476.594 330.594 593 187 593C43.406 593 
 const afterSpBgSvgPath_3 = "M184 73C183 104.48 158.48 130 127 130C95.5198 130 70 104.48 70 73C70 41.5198 95.5198 16 127 16C158.48 16 184 41.5198 184 73Z";
 const afterSpBgSvgPath_4 = "M184 73C183 104.48 158.48 130 127 130C95.5198 130 70 104.48 70 73C70 41.5198 95.5198 16 127 16C158.48 16 184 41.5198 184 73Z";
 
-
 const bgSvgPathList = {
   "before": { "pc": [beforePcBgSvgPath_1, beforePcBgSvgPath_2, beforePcBgSvgPath_3, beforePcBgSvgPath_4], "tab": [beforeTabBgSvgPath_1, beforeTabBgSvgPath_2, beforeTabBgSvgPath_3, beforeTabBgSvgPath_4], "sp": [beforeSpBgSvgPath_1, beforeSpBgSvgPath_2, beforeSpBgSvgPath_3, beforeSpBgSvgPath_4] },
   "after": { "pc": [afterPcBgSvgPath_1, afterPcBgSvgPath_2, afterPcBgSvgPath_3, afterPcBgSvgPath_4], "tab": [afterTabBgSvgPath_1, afterTabBgSvgPath_2, afterTabBgSvgPath_3, afterTabBgSvgPath_4], "sp": [afterSpBgSvgPath_1, afterSpBgSvgPath_2, afterSpBgSvgPath_3, afterSpBgSvgPath_4] },
 }
 
-function setSvgPath() {
-  const windowWidth = window.innerWidth;
+/**
+ * 現在のウィンドウ幅
+ */
+let currentWindowWidth = window.screen.width;
+
+/**
+ * 現在のウィンドウ高さ
+ */
+let currentWindowHeight = window.screen.height;
+
+/**
+ * SVGのアニメーション
+ */
+let svgAnimation;
+
+/**
+ * SVGのPathデータ作成
+ *
+ * @param {Number} windowWidth ウィンドウ幅
+ * @param {Number} windowHeight ウィンドウ高さ
+ */
+function setSvgPath(windowWidth, windowHeight) {
+  //TODO beforeとafterのpath作成
+}
+
+/**
+ * SVGのアニメーション設定
+ *
+ * @param {Number} windowWidth ウィンドウ幅
+ */
+function setSvgAnimation(windowWidth) {
+  const easing = "linear";
   let prefix;
-  if (windowWidth >= 1024) {
+
+  if (windowWidth >= pcBreakPoint) {
     prefix = "pc";
-  } else if (windowWidth >= 768) {
+  } else if (windowWidth >= tabBreakPoint) {
     prefix = "tab";
   } else {
     prefix = "sp";
   }
 
-  //初期path設定
-  path_1.setAttribute("d", bgSvgPathList["before"][prefix][0]);
-  path_2.setAttribute("d", bgSvgPathList["before"][prefix][1]);
-  path_3.setAttribute("d", bgSvgPathList["before"][prefix][2]);
-  path_4.setAttribute("d", bgSvgPathList["before"][prefix][3]);
-}
+  if (svgAnimation) {
+    svgAnimation.scrollTrigger.kill();
+    svgAnimation.kill();
+  }
 
-setSvgPath();
-setFvSvgAnimation();
-
-function setFvSvgAnimation() {
-  const easing = "linear";
-
-  mm.add("(max-width: 767px)", () => {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: fv,
-        start: "top top",
-        end: "+=1800",
-        scrub: 1,
-        pin: true,
-        aniticipatePin: 1,
-        invalidateOnRefresh: true,
-        markers: true,
-      }
-    }).to(path_1, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["sp"][0],
-      }
-    }).to(path_2, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["sp"][1],
-      }
-    }, "<").to(path_3, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["sp"][2],
-      }
-    }, "<").to(path_4, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["sp"][3],
-      }
-    }, "<").to(fvMessage, {
-      ease: easing,
-      opacity: 1,
-    });
-  });
-
-  mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: fv,
-        start: "top top",
-        end: "+=1800",
-        scrub: 1,
-        pin: true,
-        aniticipatePin: 1,
-        invalidateOnRefresh: true,
-        markers: true,
-      }
-    }).to(path_1, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["tab"][0],
-      }
-    }).to(path_2, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["tab"][1],
-      }
-    }, "<").to(path_3, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["tab"][2],
-      }
-    }, "<").to(path_4, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["tab"][3],
-      }
-    }, "<").to(fvMessage, {
-      ease: easing,
-      opacity: 1,
-    });
-  });
-
-  mm.add("(min-width: 1024px)", () => {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: fv,
-        start: "top top",
-        end: "+=1800",
-        scrub: 1,
-        pin: true,
-        aniticipatePin: 1,
-        invalidateOnRefresh: true,
-        markers: true,
-      }
-    }).to(path_1, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["pc"][0],
-      }
-    }).to(path_2, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["pc"][1],
-      }
-    }, "<").to(path_3, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["pc"][2],
-      }
-    }, "<").to(path_4, {
-      ease: easing,
-      attr: {
-        d: bgSvgPathList["after"]["pc"][3],
-      }
-    }, "<").to(fvMessage, {
-      ease: easing,
-      opacity: 1,
-    });
+  svgAnimation = gsap.timeline({
+    scrollTrigger: {
+      trigger: fv,
+      start: "top top",
+      end: "+=1800",
+      scrub: 1,
+      pin: true,
+      aniticipatePin: 1,
+      invalidateOnRefresh: true,
+      markers: true,
+    }
+  }).fromTo(svgPath_1, {
+    attr: {
+      d: bgSvgPathList["before"][prefix][0],
+    }
+  }, {
+    ease: easing,
+    attr: {
+      d: bgSvgPathList["after"][prefix][0],
+    }
+  }).fromTo(svgPath_2, {
+    attr: {
+      d: bgSvgPathList["before"][prefix][1],
+    }
+  }, {
+    ease: easing,
+    attr: {
+      d: bgSvgPathList["after"][prefix][1],
+    }
+  }, "<").fromTo(svgPath_3, {
+    attr: {
+      d: bgSvgPathList["before"][prefix][2],
+    }
+  }, {
+    ease: easing,
+    attr: {
+      d: bgSvgPathList["after"][prefix][2],
+    }
+  }, "<").fromTo(svgPath_4, {
+    attr: {
+      d: bgSvgPathList["before"][prefix][3],
+    }
+  }, {
+    ease: easing,
+    attr: {
+      d: bgSvgPathList["after"][prefix][3],
+    }
+  }, "<").fromTo(fvMessage, {
+    opacity: 0,
+    yPercent: 8,
+  }, {
+    ease: easing,
+    keyframes: [
+      { opacity: 1, yPercent: 0, },
+      { opacity: 1, yPercent: 0, },
+    ],
   });
 }
 
-function setSvgViewBoxSize() {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-
-  fvSvg.setAttribute("viewBox", "0 0 " + width + " " + height);
+/**
+ * SVGのviewBoxの設定
+ *
+ * @param {Number} windowWidth ウィンドウ幅
+ * @param {Number} windowHeight ウィンドウ高さ
+ */
+function setSvgViewBoxSize(windowWidth, windowHeight) {
+  fvSvg.setAttribute("viewBox", "0 0 " + windowWidth + " " + windowHeight);
 }
 
+/**
+ * resizeイベント
+ */
 window.addEventListener("resize", () => {
-  setSvgViewBoxSize();
-  setSvgPath();
+  currentWindowWidth = window.screen.width;
+  currentWindowHeight = window.screen.height;
+
+  setSvgViewBoxSize(currentWindowWidth, currentWindowHeight);
+  setSvgAnimation(currentWindowWidth);
 });
 
-setSvgViewBoxSize();
-setSvgPath();
+/**
+ * 初期実行処理
+ */
+function init() {
+  setSvgViewBoxSize(currentWindowWidth, currentWindowHeight);
+  setSvgAnimation(currentWindowWidth);
+}
+
+init();
