@@ -1,4 +1,27 @@
 @use "../global" as *;
 
 .header {
+  @include section-inner;
+  position: absolute;
+  top: 20px;
+
+  @include tab {
+    top: 30px;
+  }
+
+  @include pc {
+    top: 50px;
+  }
+
+  &__logo {
+    width: 110px;
+
+    @include tab {
+      width: 220px;
+    }
+  }
+
+  &__link {
+    padding: 10px 0;
+  }
 }

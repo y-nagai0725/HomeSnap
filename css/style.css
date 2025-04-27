@@ -154,31 +154,143 @@ button {
 
 img {
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.header {
+  padding: 0 3rem;
+  position: absolute;
+  top: 20px;
+}
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 0 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 0 140px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header {
+    top: 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header {
+    top: 50px;
+  }
+}
+.header__logo {
+  width: 110px;
+}
+@media screen and (min-width: 768px) {
+  .header__logo {
+    width: 220px;
+  }
+}
+.header__link {
+  padding: 10px 0;
 }
 
 .fv {
   width: 100%;
   height: 100vh;
 }
-.fv__inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
+.fv__year-wrapper {
+  position: absolute;
+  top: 12.9rem;
+  right: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.fv__svg {
-  width: 100%;
-  height: 100%;
+@media screen and (min-width: 768px) {
+  .fv__year-wrapper {
+    top: 18.3rem;
+    right: 4rem;
+  }
 }
-.fv__svg-path-1, .fv__svg-path-2 {
-  fill: #f6f5f4;
+@media screen and (min-width: 1024px) {
+  .fv__year-wrapper {
+    top: 110px;
+    right: 140px;
+  }
 }
-.fv__svg-path-3, .fv__svg-path-4 {
-  fill: #dc3c36;
+.fv__year-10th {
+  color: #dc3c36;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(50px, 5rem, 100px);
+}
+.fv__year-10th--small {
+  font-size: clamp(30px, 3rem, 60px);
+}
+@media screen and (min-width: 768px) {
+  .fv__year-10th {
+    font-size: clamp(100px, 10rem, 120px);
+  }
+  .fv__year-10th--small {
+    font-size: clamp(60px, 6rem, 65px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__year-10th {
+    font-size: clamp(120px, 14rem, 140px);
+  }
+  .fv__year-10th--small {
+    font-size: clamp(65px, 7rem, 70px);
+  }
+}
+.fv__year-text {
+  color: #dc3c36;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1.4rem, 28px);
+}
+@media screen and (min-width: 768px) {
+  .fv__year-text {
+    font-size: clamp(28px, 2.8rem, 30px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__year-text {
+    font-size: clamp(30px, 3.5rem, 35px);
+  }
+}
+.fv__text {
+  position: absolute;
+  bottom: 2.4rem;
+  right: 3rem;
+  color: #fff;
+  font-size: clamp(12px, 1.2rem, 22px);
+  line-height: 1.5;
+}
+@media screen and (min-width: 768px) {
+  .fv__text {
+    right: 4rem;
+    bottom: 4rem;
+    font-size: clamp(22px, 2.2rem, 25px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__text {
+    right: 140px;
+    bottom: 110px;
+    font-size: 25px;
+  }
 }
 .fv__message-wrapper {
+  padding: 0 3rem;
   position: absolute;
   width: 100%;
   top: 50%;
@@ -186,8 +298,17 @@ img {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
+@media screen and (min-width: 768px) {
+  .fv__message-wrapper {
+    padding: 0 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__message-wrapper {
+    padding: 0 140px;
+  }
+}
 .fv__message {
-  padding: 0 30px;
   font-size: clamp(15px, 1.5rem, 28px);
   line-height: 1.8;
   opacity: 0;
@@ -197,13 +318,11 @@ img {
 }
 @media screen and (min-width: 768px) {
   .fv__message {
-    padding: 0 40px;
     font-size: clamp(28px, 2.8rem, 34px);
   }
 }
 @media screen and (min-width: 1024px) {
   .fv__message {
-    padding: 0;
     text-align: center;
     font-size: 21px;
     line-height: 2.3;
@@ -211,6 +330,20 @@ img {
   .fv__message .br-pc {
     display: block;
   }
+}
+.fv__svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.fv__svg-path-1, .fv__svg-path-2 {
+  fill: #f6f5f4;
+}
+.fv__svg-path-3, .fv__svg-path-4 {
+  fill: #dc3c36;
 }
 
 .history {

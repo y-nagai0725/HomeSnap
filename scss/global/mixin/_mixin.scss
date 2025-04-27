@@ -20,3 +20,15 @@
     @content;
   }
 }
+
+@mixin section-inner {
+  padding: 0 3rem;
+
+  @include tab {
+    padding: 0 4rem;
+  }
+
+  @include pc {
+    padding: 0 140px;
+  }
+}
