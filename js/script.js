@@ -20,10 +20,21 @@ const tabBreakPoint = 768;
 
 const fv = document.querySelector(".fv");
 
-const fvSvg = document.querySelector(".fv__svg");
+const fvYear = document.querySelector(".fv__year-wrapper");
+
+const fvText = document.querySelector(".fv__text");
+
+const fvHeaderLogo = document.querySelector(".header__logo");
+
+const fvAnniversaryLogo = document.querySelector(".fv__anniversary-logo");
 
 const fvMessage = document.querySelector(".fv__message");
 
+const fvImageCircleTextGray = document.querySelector(".fv__image-circle-text-gray");
+
+
+
+const fvSvg = document.querySelector(".fv__svg");
 const svgPath_1 = document.querySelector(".fv__svg-path-1");
 const svgPath_2 = document.querySelector(".fv__svg-path-2");
 const svgPath_3 = document.querySelector(".fv__svg-path-3");
@@ -158,6 +169,20 @@ function setSvgAnimation(windowWidth) {
     attr: {
       d: bgSvgPathList["after"][prefix][3],
     }
+  }, "<").fromTo([fvHeaderLogo, fvAnniversaryLogo], {
+    opacity: 1,
+    xPercent: 0,
+  }, {
+    ease: easing,
+    opacity: 0,
+    xPercent: -15,
+  }, "<").fromTo([fvYear, fvText], {
+    opacity: 1,
+    xPercent: 0,
+  }, {
+    ease: easing,
+    opacity: 0,
+    xPercent: 15,
   }, "<").fromTo(fvMessage, {
     opacity: 0,
     yPercent: 8,
@@ -167,7 +192,12 @@ function setSvgAnimation(windowWidth) {
       { opacity: 1, yPercent: 0, },
       { opacity: 1, yPercent: 0, },
     ],
-  });
+  }).fromTo(fvImageCircleTextGray, {
+    opacity: 0,
+  }, {
+    ease: easing,
+    opacity: 1,
+  }, "<");
 }
 
 /**
