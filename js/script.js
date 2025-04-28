@@ -81,24 +81,9 @@ const bgSvgPathList = {
 let currentWindowWidth = window.screen.width;
 
 /**
- * 現在のウィンドウ高さ
- */
-let currentWindowHeight = window.screen.height;
-
-/**
  * SVGのアニメーション
  */
 let svgAnimation;
-
-/**
- * SVGのPathデータ作成
- *
- * @param {Number} windowWidth ウィンドウ幅
- * @param {Number} windowHeight ウィンドウ高さ
- */
-function setSvgPath(windowWidth, windowHeight) {
-  //TODO beforeとafterのpath作成
-}
 
 /**
  * SVGのアニメーション設定
@@ -204,10 +189,15 @@ function setSvgAnimation(windowWidth) {
  * SVGのviewBoxの設定
  *
  * @param {Number} windowWidth ウィンドウ幅
- * @param {Number} windowHeight ウィンドウ高さ
  */
-function setSvgViewBoxSize(windowWidth, windowHeight) {
-  fvSvg.setAttribute("viewBox", "0 0 " + windowWidth + " " + windowHeight);
+function setSvgViewBoxSize(windowWidth) {
+  if (windowWidth >= pcBreakPoint) {
+    fvSvg.setAttribute("viewBox", "0 0 1920 1080");
+  } else if (windowWidth >= tabBreakPoint) {
+    fvSvg.setAttribute("viewBox", "0 0 768 1024");
+  } else {
+    fvSvg.setAttribute("viewBox", "0 0 375 667");
+  }
 }
 
 /**
@@ -215,9 +205,8 @@ function setSvgViewBoxSize(windowWidth, windowHeight) {
  */
 window.addEventListener("resize", () => {
   currentWindowWidth = window.screen.width;
-  currentWindowHeight = window.screen.height;
 
-  setSvgViewBoxSize(currentWindowWidth, currentWindowHeight);
+  setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
 });
 
@@ -225,7 +214,7 @@ window.addEventListener("resize", () => {
  * 初期実行処理
  */
 function init() {
-  setSvgViewBoxSize(currentWindowWidth, currentWindowHeight);
+  setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
 }
 
