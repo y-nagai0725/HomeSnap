@@ -17,3 +17,12 @@
     transform: rotate(-360deg);
   }
 }
+
+@keyframes rotate-clock {
+  0%{
+    transform: translate(-15%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-15%, -50%) rotate(360deg);
+  }
+}

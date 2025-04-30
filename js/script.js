@@ -32,13 +32,13 @@ const fvMessage = document.querySelector(".fv__message");
 
 const fvImageCircleTextGray = document.querySelector(".fv__image-circle-text-gray");
 
+const fvSmallCircleWrapper = document.querySelector(".fv__small-circle-wrapper");
 
-
-const fvSvg = document.querySelector(".fv__svg");
-const svgPath_1 = document.querySelector(".fv__svg-path-1");
-const svgPath_2 = document.querySelector(".fv__svg-path-2");
-const svgPath_3 = document.querySelector(".fv__svg-path-3");
-const svgPath_4 = document.querySelector(".fv__svg-path-4");
+const fvBgSvg = document.querySelector(".fv__bg-svg");
+const svgPath_1 = document.querySelector(".fv__bg-svg-path-1");
+const svgPath_2 = document.querySelector(".fv__bg-svg-path-2");
+const svgPath_3 = document.querySelector(".fv__bg-svg-path-3");
+const svgPath_4 = document.querySelector(".fv__bg-svg-path-4");
 
 const beforePcBgSvgPath_1 = "M1912.83 -69.6496C2085.01 175.95 2095.69 868.6 1874.32 912.63C1652.94 956.65 1484.7 797.42 1511.26 452.34C1537.82 107.27 1141.73 173.86 1185.59 -69.6496C1229.44 -313.17 1740.64 -315.26 1912.83 -69.6496Z";
 const beforePcBgSvgPath_2 = "M434.598 756.65C408.033 1101.73 804.12 1035.14 760.262 1278.65C716.413 1522.17 205.207 1524.26 33.0224 1278.65C-139.142 1033.05 -149.827 340.39 71.5435 296.37C292.914 252.34 461.163 411.58 434.598 756.65Z";
@@ -153,7 +153,7 @@ function setSvgAnimation(windowWidth) {
     ease: easing,
     attr: {
       d: bgSvgPathList["after"][prefix][3],
-    }
+    },
   }, "<").fromTo([fvHeaderLogo, fvAnniversaryLogo], {
     opacity: 1,
     xPercent: 0,
@@ -182,6 +182,14 @@ function setSvgAnimation(windowWidth) {
   }, {
     ease: easing,
     opacity: 1,
+  }, "<").fromTo(fvSmallCircleWrapper, {
+    opacity: 0,
+  }, {
+    ease: easing,
+    opacity: 1,
+    onUpdate: () => {
+      setSmallCircleWrapperPosition();
+    },
   }, "<");
 }
 
@@ -192,12 +200,28 @@ function setSvgAnimation(windowWidth) {
  */
 function setSvgViewBoxSize(windowWidth) {
   if (windowWidth >= pcBreakPoint) {
-    fvSvg.setAttribute("viewBox", "0 0 1920 1080");
+    fvBgSvg.setAttribute("viewBox", "0 0 1920 1080");
   } else if (windowWidth >= tabBreakPoint) {
-    fvSvg.setAttribute("viewBox", "0 0 768 1024");
+    fvBgSvg.setAttribute("viewBox", "0 0 768 1024");
   } else {
-    fvSvg.setAttribute("viewBox", "0 0 375 667");
+    fvBgSvg.setAttribute("viewBox", "0 0 375 667");
   }
+}
+
+/**
+ * SmallCircleWrapperの位置設定
+ */
+function setSmallCircleWrapperPosition() {
+  const pathData = svgPath_4.getBoundingClientRect();
+  const width = pathData.width;
+  const height = pathData.height;
+  const top = pathData.top;
+  const left = pathData.left;
+
+  fvSmallCircleWrapper.style.width = width + "px";
+  fvSmallCircleWrapper.style.height = height + "px";
+  fvSmallCircleWrapper.style.top = top + "px";
+  fvSmallCircleWrapper.style.left = left + "px";
 }
 
 /**

@@ -166,7 +166,27 @@
     }
   }
 
-  &__svg {
+  &__small-circle-wrapper {
+    position: absolute;
+  }
+
+  &__image-circle-text-white {
+    position: absolute;
+    width: 100%;
+    animation: rotate-left-text 60s linear infinite;
+  }
+
+  &__image-circle-line {
+    width: 36%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 15% center;
+    transform: translate(-15%, -50%);
+    animation: rotate-clock 60s steps(60) infinite;
+  }
+
+  &__bg-svg {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -175,18 +195,18 @@
     z-index: -1;
   }
 
-  &__svg-path-1,
-  &__svg-path-2 {
+  &__bg-svg-path-1,
+  &__bg-svg-path-2 {
     fill: $gray;
   }
 
-  &__svg-path-3,
-  &__svg-path-4 {
+  &__bg-svg-path-3,
+  &__bg-svg-path-4 {
     fill: $red;
   }
 }
 
 .history {
-  height: 100vh;
+  height: 1000vh;
   background-color: $red;
 }
