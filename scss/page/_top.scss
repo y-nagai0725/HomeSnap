@@ -5,6 +5,18 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
+  --border-opacity: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid $red;
+    opacity: var(--border-opacity);
+  }
 
   &__year-wrapper {
     position: absolute;
@@ -49,6 +61,36 @@
       &--small {
         font-size: clamp(65px, 7rem, 70px);
       }
+    }
+  }
+
+  &__year-prefix {
+    color: $red;
+    font-family: $poppins;
+    font-weight: 700;
+    font-size: clamp(50px, 5rem, 100px);
+
+    @include tab {
+      font-size: clamp(100px, 10rem, 120px);
+    }
+
+    @include pc {
+      font-size: clamp(120px, 14rem, 140px);
+    }
+  }
+
+  &__year-suffix {
+    color: $red;
+    font-family: $poppins;
+    font-weight: 700;
+    font-size: clamp(30px, 3rem, 60px);
+
+    @include tab {
+      font-size: clamp(60px, 6rem, 65px);
+    }
+
+    @include pc {
+      font-size: clamp(65px, 7rem, 70px);
     }
   }
 
@@ -111,6 +153,46 @@
     }
   }
 
+  &__scroll-line {
+    position: absolute;
+    bottom: 0;
+    left: 3rem;
+    width: 4px;
+    height: 70px;
+    border-radius: 100vmax;
+    background-color: $red;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      aspect-ratio: 1;
+      border-radius: 100vmax;
+      background-color: $red;
+      box-shadow: $shadow-black;
+      animation: scroll-circle 2s ease-in-out infinite;
+    }
+
+    @include tab {
+      left: 4rem;
+      width: 6px;
+      height: 128px;
+
+      &::before {
+        width: 26px;
+      }
+    }
+
+    @include pc {
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100px;
+    }
+  }
+
   &__message-wrapper {
     @include section-inner;
     position: absolute;
@@ -144,7 +226,7 @@
     }
   }
 
-  &__image-circle-text-gray {
+  &__circle-text-gray {
     max-width: none;
     width: 64rem;
     height: 64rem;
@@ -152,6 +234,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0;
     animation: rotate-right-text 60s linear infinite;
     z-index: -2;
 
@@ -168,22 +251,37 @@
 
   &__small-circle-wrapper {
     position: absolute;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 9%;
+      aspect-ratio: 1;
+      border-radius: 100vmax;
+      background-color: $white;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(0, -50%);
+      width: 30%;
+      height: 2px;
+      background-color: $white;
+      transform-origin: left;
+      animation: rotate-clock 60s steps(60) infinite;
+    }
   }
 
-  &__image-circle-text-white {
+  &__circle-text-white {
     position: absolute;
     width: 100%;
     animation: rotate-left-text 60s linear infinite;
-  }
-
-  &__image-circle-line {
-    width: 36%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: 15% center;
-    transform: translate(-15%, -50%);
-    animation: rotate-clock 60s steps(60) infinite;
   }
 
   &__bg-svg {
@@ -203,6 +301,36 @@
   &__bg-svg-path-3,
   &__bg-svg-path-4 {
     fill: $red;
+  }
+
+  &__image-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35rem;
+    aspect-ratio: 1;
+    border-radius: 100vmax;
+    overflow: hidden;
+    z-index: -2;
+
+    @include tab {
+      width: 54rem;
+    }
+
+    @include pc {
+      width: 860px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+
+    &.js-showed {
+      opacity: 1;
+    }
   }
 }
 

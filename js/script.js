@@ -28,9 +28,11 @@ const fvHeaderLogo = document.querySelector(".header__logo");
 
 const fvAnniversaryLogo = document.querySelector(".fv__anniversary-logo");
 
+const fvScrollLine = document.querySelector(".fv__scroll-line");
+
 const fvMessage = document.querySelector(".fv__message");
 
-const fvImageCircleTextGray = document.querySelector(".fv__image-circle-text-gray");
+const fvCircleTextGray = document.querySelector(".fv__circle-text-gray");
 
 const fvSmallCircleWrapper = document.querySelector(".fv__small-circle-wrapper");
 
@@ -39,6 +41,8 @@ const svgPath_1 = document.querySelector(".fv__bg-svg-path-1");
 const svgPath_2 = document.querySelector(".fv__bg-svg-path-2");
 const svgPath_3 = document.querySelector(".fv__bg-svg-path-3");
 const svgPath_4 = document.querySelector(".fv__bg-svg-path-4");
+
+const fvImageWrapper = document.querySelector(".fv__image-wrapper");
 
 const beforePcBgSvgPath_1 = "M1912.83 -69.6496C2085.01 175.95 2095.69 868.6 1874.32 912.63C1652.94 956.65 1484.7 797.42 1511.26 452.34C1537.82 107.27 1141.73 173.86 1185.59 -69.6496C1229.44 -313.17 1740.64 -315.26 1912.83 -69.6496Z";
 const beforePcBgSvgPath_2 = "M434.598 756.65C408.033 1101.73 804.12 1035.14 760.262 1278.65C716.413 1522.17 205.207 1524.26 33.0224 1278.65C-139.142 1033.05 -149.827 340.39 71.5435 296.37C292.914 252.34 461.163 411.58 434.598 756.65Z";
@@ -92,6 +96,7 @@ let svgAnimation;
  */
 function setSvgAnimation(windowWidth) {
   const easing = "linear";
+  const pseudoElementProperty = "--border-opacity";
   let prefix;
 
   if (windowWidth >= pcBreakPoint) {
@@ -116,7 +121,6 @@ function setSvgAnimation(windowWidth) {
       pin: true,
       aniticipatePin: 1,
       invalidateOnRefresh: true,
-      markers: true,
     }
   }).fromTo(svgPath_1, {
     attr: {
@@ -126,7 +130,13 @@ function setSvgAnimation(windowWidth) {
     ease: easing,
     attr: {
       d: bgSvgPathList["after"][prefix][0],
-    }
+    },
+    onUpdate: () => {
+      // 進捗度計算
+      // この部分はアニメーション全体の1/3なので3倍で計算
+      const progress = svgAnimation ? svgAnimation.progress() * 3 : 0;
+      fv.style.setProperty(pseudoElementProperty, (1 - progress));
+    },
   }).fromTo(svgPath_2, {
     attr: {
       d: bgSvgPathList["before"][prefix][1],
@@ -154,6 +164,18 @@ function setSvgAnimation(windowWidth) {
     attr: {
       d: bgSvgPathList["after"][prefix][3],
     },
+  }, "<").fromTo(fvScrollLine, {
+    opacity: 1,
+  }, {
+    ease: easing,
+    opacity: 0,
+  }, "<").fromTo(fvImageWrapper, {
+    opacity: 1,
+    scale: 1,
+  }, {
+    ease: easing,
+    opacity: 0,
+    scale: 0,
   }, "<").fromTo([fvHeaderLogo, fvAnniversaryLogo], {
     opacity: 1,
     xPercent: 0,
@@ -177,7 +199,7 @@ function setSvgAnimation(windowWidth) {
       { opacity: 1, yPercent: 0, },
       { opacity: 1, yPercent: 0, },
     ],
-  }).fromTo(fvImageCircleTextGray, {
+  }).fromTo(fvCircleTextGray, {
     opacity: 0,
   }, {
     ease: easing,
@@ -225,6 +247,49 @@ function setSmallCircleWrapperPosition() {
 }
 
 /**
+ * FVの画像更新処理
+ */
+function changeFvImage() {
+  const fvYearPrefix = document.querySelector(".fv__year-prefix");
+  const fvYearSuffix = document.querySelector(".fv__year-suffix");
+  const fvImages = document.querySelectorAll(".fv__image");
+  const maxIndex = fvImages.length - 1;
+  let currentIndex = 0;
+
+  //初期表示
+  fvImages[currentIndex].classList.add("js-showed");
+
+  //2秒毎に処理
+  setInterval(() => {
+    //現在表示している画像を非表示
+    fvImages[currentIndex].classList.remove("js-showed");
+
+    //index更新
+    currentIndex++;
+    if (currentIndex > maxIndex) {
+      currentIndex = 0;
+    }
+
+    //次の画像表示
+    fvImages[currentIndex].classList.add("js-showed");
+
+    //数字表示
+    fvYearPrefix.innerHTML = (currentIndex + 1);
+
+    //接尾表示
+    if (currentIndex === 0) {
+      fvYearSuffix.innerHTML = "st";
+    } else if (currentIndex === 1) {
+      fvYearSuffix.innerHTML = "nd";
+    } else if (currentIndex === 2) {
+      fvYearSuffix.innerHTML = "rd";
+    } else {
+      fvYearSuffix.innerHTML = "th";
+    }
+  }, 2000);
+}
+
+/**
  * resizeイベント
  */
 window.addEventListener("resize", () => {
@@ -238,6 +303,7 @@ window.addEventListener("resize", () => {
  * 初期実行処理
  */
 function init() {
+  changeFvImage();
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
 }

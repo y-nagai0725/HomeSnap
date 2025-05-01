@@ -167,22 +167,38 @@ meter {
 }
 @-webkit-keyframes rotate-clock {
   0% {
-    -webkit-transform: translate(-15%, -50%) rotate(0deg);
-            transform: translate(-15%, -50%) rotate(0deg);
+    -webkit-transform: translate(0, -50%) rotate(0deg);
+            transform: translate(0, -50%) rotate(0deg);
   }
   100% {
-    -webkit-transform: translate(-15%, -50%) rotate(360deg);
-            transform: translate(-15%, -50%) rotate(360deg);
+    -webkit-transform: translate(0, -50%) rotate(360deg);
+            transform: translate(0, -50%) rotate(360deg);
   }
 }
 @keyframes rotate-clock {
   0% {
-    -webkit-transform: translate(-15%, -50%) rotate(0deg);
-            transform: translate(-15%, -50%) rotate(0deg);
+    -webkit-transform: translate(0, -50%) rotate(0deg);
+            transform: translate(0, -50%) rotate(0deg);
   }
   100% {
-    -webkit-transform: translate(-15%, -50%) rotate(360deg);
-            transform: translate(-15%, -50%) rotate(360deg);
+    -webkit-transform: translate(0, -50%) rotate(360deg);
+            transform: translate(0, -50%) rotate(360deg);
+  }
+}
+@-webkit-keyframes scroll-circle {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 90%;
+  }
+}
+@keyframes scroll-circle {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 90%;
   }
 }
 html {
@@ -261,6 +277,17 @@ img {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  --border-opacity: 1;
+}
+.fv::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 5px solid #dc3c36;
+  opacity: var(--border-opacity);
 }
 .fv__year-wrapper {
   position: absolute;
@@ -311,6 +338,38 @@ img {
     font-size: clamp(120px, 14rem, 140px);
   }
   .fv__year-10th--small {
+    font-size: clamp(65px, 7rem, 70px);
+  }
+}
+.fv__year-prefix {
+  color: #dc3c36;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(50px, 5rem, 100px);
+}
+@media screen and (min-width: 768px) {
+  .fv__year-prefix {
+    font-size: clamp(100px, 10rem, 120px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__year-prefix {
+    font-size: clamp(120px, 14rem, 140px);
+  }
+}
+.fv__year-suffix {
+  color: #dc3c36;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3rem, 60px);
+}
+@media screen and (min-width: 768px) {
+  .fv__year-suffix {
+    font-size: clamp(60px, 6rem, 65px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__year-suffix {
     font-size: clamp(65px, 7rem, 70px);
   }
 }
@@ -375,6 +434,49 @@ img {
     bottom: 110px;
   }
 }
+.fv__scroll-line {
+  position: absolute;
+  bottom: 0;
+  left: 3rem;
+  width: 4px;
+  height: 70px;
+  border-radius: 100vmax;
+  background-color: #dc3c36;
+}
+.fv__scroll-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 18px;
+  aspect-ratio: 1;
+  border-radius: 100vmax;
+  background-color: #dc3c36;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  -webkit-animation: scroll-circle 2s ease-in-out infinite;
+          animation: scroll-circle 2s ease-in-out infinite;
+}
+@media screen and (min-width: 768px) {
+  .fv__scroll-line {
+    left: 4rem;
+    width: 6px;
+    height: 128px;
+  }
+  .fv__scroll-line::before {
+    width: 26px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__scroll-line {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    height: 100px;
+  }
+}
 .fv__message-wrapper {
   padding: 0 3rem;
   position: absolute;
@@ -417,7 +519,7 @@ img {
     display: block;
   }
 }
-.fv__image-circle-text-gray {
+.fv__circle-text-gray {
   max-width: none;
   width: 64rem;
   height: 64rem;
@@ -426,18 +528,19 @@ img {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  opacity: 0;
   -webkit-animation: rotate-right-text 60s linear infinite;
           animation: rotate-right-text 60s linear infinite;
   z-index: -2;
 }
 @media screen and (min-width: 768px) {
-  .fv__image-circle-text-gray {
+  .fv__circle-text-gray {
     width: 102.2rem;
     height: 102.2rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .fv__image-circle-text-gray {
+  .fv__circle-text-gray {
     width: 107.7rem;
     height: 107.7rem;
   }
@@ -445,23 +548,38 @@ img {
 .fv__small-circle-wrapper {
   position: absolute;
 }
-.fv__image-circle-text-white {
+.fv__small-circle-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 9%;
+  aspect-ratio: 1;
+  border-radius: 100vmax;
+  background-color: #fff;
+}
+.fv__small-circle-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  width: 30%;
+  height: 2px;
+  background-color: #fff;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-animation: rotate-clock 60s steps(60) infinite;
+          animation: rotate-clock 60s steps(60) infinite;
+}
+.fv__circle-text-white {
   position: absolute;
   width: 100%;
   -webkit-animation: rotate-left-text 60s linear infinite;
           animation: rotate-left-text 60s linear infinite;
-}
-.fv__image-circle-line {
-  width: 36%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform-origin: 15% center;
-          transform-origin: 15% center;
-  -webkit-transform: translate(-15%, -50%);
-          transform: translate(-15%, -50%);
-  -webkit-animation: rotate-clock 60s steps(60) infinite;
-          animation: rotate-clock 60s steps(60) infinite;
 }
 .fv__bg-svg {
   width: 100%;
@@ -476,6 +594,37 @@ img {
 }
 .fv__bg-svg-path-3, .fv__bg-svg-path-4 {
   fill: #dc3c36;
+}
+.fv__image-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 35rem;
+  aspect-ratio: 1;
+  border-radius: 100vmax;
+  overflow: hidden;
+  z-index: -2;
+}
+@media screen and (min-width: 768px) {
+  .fv__image-wrapper {
+    width: 54rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .fv__image-wrapper {
+    width: 860px;
+  }
+}
+.fv__image {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s ease-out;
+  transition: opacity 0.4s ease-out;
+}
+.fv__image.js-showed {
+  opacity: 1;
 }
 
 .history {
