@@ -394,6 +394,7 @@ img {
   bottom: 2.4rem;
   right: 3rem;
   color: #fff;
+  font-weight: 700;
   font-size: clamp(12px, 1.2rem, 22px);
   line-height: 1.5;
 }
@@ -497,7 +498,7 @@ img {
   }
 }
 .fv__message {
-  font-size: clamp(15px, 1.5rem, 28px);
+  font-size: clamp(15px, 1.5rem, 22px);
   line-height: 1.8;
   opacity: 0;
 }
@@ -506,7 +507,7 @@ img {
 }
 @media screen and (min-width: 768px) {
   .fv__message {
-    font-size: clamp(28px, 2.8rem, 34px);
+    font-size: clamp(22px, 2.2rem, 26px);
   }
 }
 @media screen and (min-width: 1024px) {
