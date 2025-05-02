@@ -32,8 +32,8 @@
     }
 
     @include pc {
-      top: 110px;
-      right: 140px;
+      top: 11rem;
+      right: 14rem;
     }
   }
 
@@ -115,19 +115,19 @@
     right: 3rem;
     color: $white;
     font-weight: 700;
-    font-size: clamp(12px, 1.2rem, 22px);
+    font-size: clamp(12px, 1.2rem, 20px);
     line-height: 1.5;
 
     @include tab {
       right: 4rem;
       bottom: 4rem;
-      font-size: clamp(22px, 2.2rem, 25px);
+      font-size: clamp(20px, 2rem, 22px);
     }
 
     @include pc {
-      right: 140px;
-      bottom: 110px;
-      font-size: 25px;
+      right: 14rem;
+      bottom: 11rem;
+      font-size: clamp(22px, 2.5rem, 25px);
     }
   }
 
@@ -149,8 +149,8 @@
 
     @include pc {
       width: 27rem;
-      left: 140px;
-      bottom: 110px;
+      left: 14rem;
+      bottom: 11rem;
     }
   }
 
@@ -213,7 +213,7 @@
     }
 
     @include tab {
-      font-size: clamp(22px, 2.2rem, 26px);
+      font-size: clamp(22px, 2.2rem, 24px);
     }
 
     @include pc {
@@ -336,6 +336,92 @@
 }
 
 .history {
-  height: 1000vh;
+  @include section-margin;
+  height: 100vh;
   background-color: $red;
+
+  &__inner {
+    @include section-inner;
+    padding-top: 4rem;
+
+    @include tab {
+      padding-top: 5.6rem;
+    }
+
+    @include pc {
+      padding-top: 14rem;
+    }
+  }
+
+  &__title {
+    @include section-title(left);
+
+    &--en {
+      color: $white;
+    }
+  }
+}
+
+.contents {
+  @include section-margin;
+
+  &__inner {
+    @include section-inner;
+  }
+
+  &__title {
+    @include section-title;
+  }
+
+  &__text {
+    font-size: clamp(15px, 1.5rem, 24px);
+    line-height: 1.8;
+
+    @include tab {
+      font-size: clamp(22px, 2.2rem, 24px);
+    }
+
+    @include pc {
+      font-size: clamp(18px, 2.1rem, 21px);
+      text-align: center;
+    }
+  }
+
+  &__br-pc {
+    display: none;
+
+    @include pc {
+      display: block;
+    }
+  }
+}
+
+.events {
+  @include section-margin;
+
+  &__inner {
+    @include section-inner;
+  }
+
+  &__title {
+    @include section-title(left);
+  }
+
+  &__title-br {
+    @include pc {
+      display: none;
+    }
+  }
+}
+
+.posts {
+  @include section-margin;
+
+  &__inner {
+    @include section-inner;
+  }
+
+  &__title {
+    @include section-title;
+  }
 }

@@ -247,7 +247,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .header {
-    padding: 0 140px;
+    padding: 0 14rem;
   }
 }
 @media screen and (min-width: 768px) {
@@ -312,8 +312,8 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .fv__year-wrapper {
-    top: 110px;
-    right: 140px;
+    top: 11rem;
+    right: 14rem;
   }
 }
 .fv__year-10th {
@@ -395,21 +395,21 @@ img {
   right: 3rem;
   color: #fff;
   font-weight: 700;
-  font-size: clamp(12px, 1.2rem, 22px);
+  font-size: clamp(12px, 1.2rem, 20px);
   line-height: 1.5;
 }
 @media screen and (min-width: 768px) {
   .fv__text {
     right: 4rem;
     bottom: 4rem;
-    font-size: clamp(22px, 2.2rem, 25px);
+    font-size: clamp(20px, 2rem, 22px);
   }
 }
 @media screen and (min-width: 1024px) {
   .fv__text {
-    right: 140px;
-    bottom: 110px;
-    font-size: 25px;
+    right: 14rem;
+    bottom: 11rem;
+    font-size: clamp(22px, 2.5rem, 25px);
   }
 }
 .fv__anniversary-logo {
@@ -431,8 +431,8 @@ img {
 @media screen and (min-width: 1024px) {
   .fv__anniversary-logo {
     width: 27rem;
-    left: 140px;
-    bottom: 110px;
+    left: 14rem;
+    bottom: 11rem;
   }
 }
 .fv__scroll-line {
@@ -494,7 +494,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .fv__message-wrapper {
-    padding: 0 140px;
+    padding: 0 14rem;
   }
 }
 .fv__message {
@@ -507,7 +507,7 @@ img {
 }
 @media screen and (min-width: 768px) {
   .fv__message {
-    font-size: clamp(22px, 2.2rem, 26px);
+    font-size: clamp(22px, 2.2rem, 24px);
   }
 }
 @media screen and (min-width: 1024px) {
@@ -629,6 +629,321 @@ img {
 }
 
 .history {
-  height: 1000vh;
+  margin-bottom: 10rem;
+  height: 100vh;
   background-color: #dc3c36;
+}
+@media screen and (min-width: 1024px) {
+  .history {
+    margin-bottom: 36rem;
+  }
+}
+.history__inner {
+  padding: 0 3rem;
+  padding-top: 4rem;
+}
+@media screen and (min-width: 768px) {
+  .history__inner {
+    padding: 0 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__inner {
+    padding: 0 14rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .history__inner {
+    padding-top: 5.6rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__inner {
+    padding-top: 14rem;
+  }
+}
+.history__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+.history__title--en {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3rem, 54px);
+  letter-spacing: 0.02em;
+}
+.history__title--ja {
+  font-weight: 700;
+  font-size: clamp(14px, 1.4rem, 24px);
+}
+@media screen and (min-width: 768px) {
+  .history__title {
+    margin-bottom: 4rem;
+    gap: 1.6rem;
+  }
+  .history__title--en {
+    font-size: clamp(54px, 5.4rem, 64px);
+  }
+  .history__title--ja {
+    font-size: clamp(24px, 2.4rem, 26px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__title {
+    margin-bottom: 6.4rem;
+  }
+  .history__title--en {
+    font-size: clamp(64px, 7.7rem, 77px);
+  }
+  .history__title--ja {
+    font-size: clamp(26px, 2.8rem, 28px);
+  }
+}
+.history__title--en {
+  color: #fff;
+}
+
+.contents {
+  margin-bottom: 10rem;
+}
+@media screen and (min-width: 1024px) {
+  .contents {
+    margin-bottom: 36rem;
+  }
+}
+.contents__inner {
+  padding: 0 3rem;
+}
+@media screen and (min-width: 768px) {
+  .contents__inner {
+    padding: 0 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .contents__inner {
+    padding: 0 14rem;
+  }
+}
+.contents__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+.contents__title--en {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3rem, 54px);
+  letter-spacing: 0.02em;
+}
+.contents__title--ja {
+  font-weight: 700;
+  font-size: clamp(14px, 1.4rem, 24px);
+}
+@media screen and (min-width: 768px) {
+  .contents__title {
+    margin-bottom: 4rem;
+    gap: 1.6rem;
+  }
+  .contents__title--en {
+    font-size: clamp(54px, 5.4rem, 64px);
+  }
+  .contents__title--ja {
+    font-size: clamp(24px, 2.4rem, 26px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .contents__title {
+    margin-bottom: 6.4rem;
+  }
+  .contents__title--en {
+    font-size: clamp(64px, 7.7rem, 77px);
+  }
+  .contents__title--ja {
+    font-size: clamp(26px, 2.8rem, 28px);
+  }
+}
+.contents__text {
+  font-size: clamp(15px, 1.5rem, 24px);
+  line-height: 1.8;
+}
+@media screen and (min-width: 768px) {
+  .contents__text {
+    font-size: clamp(22px, 2.2rem, 24px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .contents__text {
+    font-size: clamp(18px, 2.1rem, 21px);
+    text-align: center;
+  }
+}
+.contents__br-pc {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .contents__br-pc {
+    display: block;
+  }
+}
+
+.events {
+  margin-bottom: 10rem;
+}
+@media screen and (min-width: 1024px) {
+  .events {
+    margin-bottom: 36rem;
+  }
+}
+.events__inner {
+  padding: 0 3rem;
+}
+@media screen and (min-width: 768px) {
+  .events__inner {
+    padding: 0 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .events__inner {
+    padding: 0 14rem;
+  }
+}
+.events__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+.events__title--en {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3rem, 54px);
+  letter-spacing: 0.02em;
+}
+.events__title--ja {
+  font-weight: 700;
+  font-size: clamp(14px, 1.4rem, 24px);
+}
+@media screen and (min-width: 768px) {
+  .events__title {
+    margin-bottom: 4rem;
+    gap: 1.6rem;
+  }
+  .events__title--en {
+    font-size: clamp(54px, 5.4rem, 64px);
+  }
+  .events__title--ja {
+    font-size: clamp(24px, 2.4rem, 26px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .events__title {
+    margin-bottom: 6.4rem;
+  }
+  .events__title--en {
+    font-size: clamp(64px, 7.7rem, 77px);
+  }
+  .events__title--ja {
+    font-size: clamp(26px, 2.8rem, 28px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .events__title-br {
+    display: none;
+  }
+}
+
+.posts {
+  margin-bottom: 10rem;
+}
+@media screen and (min-width: 1024px) {
+  .posts {
+    margin-bottom: 36rem;
+  }
+}
+.posts__inner {
+  padding: 0 3rem;
+}
+@media screen and (min-width: 768px) {
+  .posts__inner {
+    padding: 0 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .posts__inner {
+    padding: 0 14rem;
+  }
+}
+.posts__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+.posts__title--en {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3rem, 54px);
+  letter-spacing: 0.02em;
+}
+.posts__title--ja {
+  font-weight: 700;
+  font-size: clamp(14px, 1.4rem, 24px);
+}
+@media screen and (min-width: 768px) {
+  .posts__title {
+    margin-bottom: 4rem;
+    gap: 1.6rem;
+  }
+  .posts__title--en {
+    font-size: clamp(54px, 5.4rem, 64px);
+  }
+  .posts__title--ja {
+    font-size: clamp(24px, 2.4rem, 26px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .posts__title {
+    margin-bottom: 6.4rem;
+  }
+  .posts__title--en {
+    font-size: clamp(64px, 7.7rem, 77px);
+  }
+  .posts__title--ja {
+    font-size: clamp(26px, 2.8rem, 28px);
+  }
 }/*# sourceMappingURL=style.css.map */
