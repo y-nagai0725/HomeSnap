@@ -80,6 +80,11 @@ const bgSvgPathList = {
 }
 
 /**
+ * トップへ戻るボタン
+ */
+const topBackButton = document.querySelector(".footer__back-button");
+
+/**
  * 現在のウィンドウ幅
  */
 let currentWindowWidth = window.screen.width;
@@ -288,6 +293,19 @@ function changeFvImage() {
     }
   }, 2000);
 }
+
+/**
+ * トップへ戻るボタンクリックイベント
+ */
+topBackButton.addEventListener("click", () => {
+  gsap.to(window, {
+    duration: 1,
+    ease: gsapEasing,
+    scrollTo: {
+      y: 0,
+    }
+  })
+});
 
 /**
  * resizeイベント

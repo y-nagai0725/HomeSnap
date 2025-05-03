@@ -1,5 +1,73 @@
 @use "../global" as *;
 
 .footer {
+  &__back-button {
+    margin-inline: auto;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    display: block;
+    color: $red;
+    font-family: $poppins;
+    font-weight: 700;
+    font-size: clamp(18px, 1.8rem, 30px);
 
+    @include tab {
+      margin-bottom: 4rem;
+      font-size: 30px;
+    }
+  }
+
+  &__inner {
+    padding-top: 6.5rem;
+    padding-bottom: 1.4rem;
+    background-color: $red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6.8rem;
+
+    @include tab {
+      padding-top: 13rem;
+      padding-bottom: 1.6rem;
+      gap: 9.6rem;
+    }
+
+    @include pc {
+      padding-top: 15.2rem;
+      padding-bottom: 3rem;
+      gap: 18.1rem;
+    }
+  }
+
+  &__link {
+    padding: 10px 0;
+  }
+
+  &__logo-image {
+    width: 13rem;
+    aspect-ratio: 130 / 20;
+
+    @include tab {
+      width: 26rem;
+    }
+
+    @include pc {
+      width: 30rem;
+    }
+  }
+
+  &__copyright {
+    color: $white;
+    font-family: $poppins;
+    font-weight: 700;
+    font-size: clamp(12px, 1.2rem, 18px);
+
+    @include tab {
+      font-size: clamp(18px, 1.8rem, 19px);
+    }
+
+    @include pc {
+      font-size: clamp(19px, 2rem, 20px);
+    }
+  }
 }
