@@ -291,7 +291,6 @@ img {
 .footer__inner {
   padding-top: 6.5rem;
   padding-bottom: 1.4rem;
-  background-color: #dc3c36;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -303,6 +302,22 @@ img {
       -ms-flex-align: center;
           align-items: center;
   gap: 6.8rem;
+  position: relative;
+  overflow: hidden;
+}
+.footer__inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 200%;
+  aspect-ratio: 1;
+  -webkit-clip-path: circle(50% at center);
+          clip-path: circle(50% at center);
+  background-color: #dc3c36;
+  z-index: -1;
 }
 @media screen and (min-width: 768px) {
   .footer__inner {
@@ -313,7 +328,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .footer__inner {
-    padding-top: 15.2rem;
+    padding-top: 16rem;
     padding-bottom: 3rem;
     gap: 18.1rem;
   }

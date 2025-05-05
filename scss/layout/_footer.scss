@@ -20,11 +20,25 @@
   &__inner {
     padding-top: 6.5rem;
     padding-bottom: 1.4rem;
-    background-color: $red;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 6.8rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200%;
+      aspect-ratio: 1;
+      clip-path: circle(50% at center);
+      background-color: $red;
+      z-index: -1;
+    }
 
     @include tab {
       padding-top: 13rem;
@@ -33,7 +47,7 @@
     }
 
     @include pc {
-      padding-top: 15.2rem;
+      padding-top: 16rem;
       padding-bottom: 3rem;
       gap: 18.1rem;
     }
