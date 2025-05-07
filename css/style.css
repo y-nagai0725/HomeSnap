@@ -727,34 +727,28 @@ img {
   margin-bottom: 10rem;
   height: 100vh;
   background-color: #dc3c36;
+  position: relative;
 }
 @media screen and (min-width: 1024px) {
   .history {
     margin-bottom: 36rem;
   }
 }
-.history__inner {
-  padding: 0 3rem;
-  padding-top: 4rem;
+.history__title-wrapper {
+  position: absolute;
+  top: 4rem;
+  left: 3rem;
 }
 @media screen and (min-width: 768px) {
-  .history__inner {
-    padding: 0 4rem;
+  .history__title-wrapper {
+    top: 5.6rem;
+    left: 4rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .history__inner {
-    padding: 0 14rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .history__inner {
-    padding-top: 5.6rem;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .history__inner {
-    padding-top: 14rem;
+  .history__title-wrapper {
+    top: 14rem;
+    left: 14rem;
   }
 }
 .history__title {
@@ -765,11 +759,12 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   gap: 0.8rem;
   margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 .history__title--en {
   font-family: "Poppins", sans-serif;
@@ -806,6 +801,146 @@ img {
 }
 .history__title--en {
   color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .history__title {
+    margin-bottom: 1.6rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__title {
+    margin-bottom: 2.4rem;
+  }
+}
+.history__period {
+  margin-bottom: 1rem;
+  display: block;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2rem, 36px);
+  letter-spacing: 0.02em;
+}
+@media screen and (min-width: 768px) {
+  .history__period {
+    margin-bottom: 1.6rem;
+    font-size: clamp(36px, 3.6rem, 46px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__period {
+    margin-bottom: 2.4rem;
+    font-size: clamp(46px, 5.6rem, 56px);
+  }
+}
+.history__sub-title {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(14px, 1.4rem, 20px);
+}
+@media screen and (min-width: 768px) {
+  .history__sub-title {
+    font-size: clamp(20px, 2.2rem, 22px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__sub-title {
+    font-size: clamp(20px, 2.2rem, 22px);
+  }
+}
+.history__description-wrapper {
+  padding: 0 3rem;
+  position: absolute;
+  top: 66%;
+  left: 0;
+}
+@media screen and (min-width: 768px) {
+  .history__description-wrapper {
+    padding: 0 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__description-wrapper {
+    padding: 0;
+    width: 44.4rem;
+    top: 50%;
+    left: initial;
+    right: 14rem;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+}
+.history__description {
+  color: #fff;
+  font-size: clamp(13px, 1.3rem, 20px);
+  line-height: 1.5;
+}
+@media screen and (min-width: 768px) {
+  .history__description {
+    font-size: clamp(20px, 2.4rem, 24px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__description {
+    font-size: 21px;
+    line-height: 1.8;
+  }
+}
+.history__number-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+@media screen and (min-width: 1024px) {
+  .history__number-wrapper {
+    top: 10%;
+    left: 0;
+    right: initial;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+.history__number {
+  color: rgba(255, 255, 255, 0.29);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(150px, 15rem, 200px);
+}
+@media screen and (min-width: 768px) {
+  .history__number {
+    font-size: clamp(200px, 20rem, 280px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__number {
+    font-size: clamp(440px, 49rem, 490px);
+  }
+  .history__number.js-small {
+    font-size: clamp(320px, 38rem, 380px);
+  }
+}
+.history__number-suffix {
+  color: rgba(255, 255, 255, 0.29);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(120px, 12rem, 150px);
+  letter-spacing: 0.02em;
+}
+@media screen and (min-width: 768px) {
+  .history__number-suffix {
+    font-size: clamp(150px, 15rem, 180px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__number-suffix {
+    font-size: clamp(150px, 21rem, 210px);
+  }
+  .history__number-suffix.js-small {
+    font-size: clamp(130px, 19rem, 190px);
+  }
 }
 
 .contents {

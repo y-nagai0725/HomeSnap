@@ -95,6 +95,11 @@ let currentWindowWidth = window.screen.width;
 let svgAnimation;
 
 /**
+ * Historyセクションのアニメーション
+ */
+let historySectionAnimation;
+
+/**
  * SVGのアニメーション設定
  *
  * @param {Number} windowWidth ウィンドウ幅
@@ -295,6 +300,30 @@ function changeFvImage() {
 }
 
 /**
+ * Historyセクションアニメーション設定
+ */
+function setHistoryAnimation() {
+  const historySection = document.querySelector(".history");
+
+  if(historySectionAnimation){
+    historySectionAnimation.kill();
+  }
+
+  historySectionAnimation = ScrollTrigger.create({
+    trigger: historySection,
+    start: "top top",
+    end: "+=1000",
+    scrub: 1,
+    pin: true,
+    aniticipatePin: 1,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => {
+      //console.log(self.progress);
+    }
+  });
+}
+
+/**
  * トップへ戻るボタンクリックイベント
  */
 topBackButton.addEventListener("click", () => {
@@ -315,6 +344,7 @@ window.addEventListener("resize", () => {
 
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
+  setHistoryAnimation();
 });
 
 /**
@@ -324,6 +354,7 @@ function init() {
   changeFvImage();
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
+  setHistoryAnimation();
 }
 
 init();

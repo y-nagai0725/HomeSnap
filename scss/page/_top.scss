@@ -339,25 +339,169 @@
   @include section-margin;
   height: 100vh;
   background-color: $red;
+  position: relative;
 
-  &__inner {
-    @include section-inner;
-    padding-top: 4rem;
+  &__title-wrapper {
+    position: absolute;
+    top: 4rem;
+    left: 3rem;
 
     @include tab {
-      padding-top: 5.6rem;
+      top: 5.6rem;
+      left: 4rem;
     }
 
     @include pc {
-      padding-top: 14rem;
+      top: 14rem;
+      left: 14rem;
     }
   }
 
   &__title {
-    @include section-title(left);
+    @include section-title(flex-start);
+    margin-bottom: 1rem;
 
     &--en {
       color: $white;
+    }
+
+    @include tab {
+      margin-bottom: 1.6rem;
+    }
+
+    @include pc {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__period {
+    margin-bottom: 1rem;
+    display: block;
+    color: $white;
+    font-family: $poppins;
+    font-weight: 700;
+    font-size: clamp(20px, 2rem, 36px);
+    letter-spacing: 0.02em;
+
+    @include tab {
+      margin-bottom: 1.6rem;
+      font-size: clamp(36px, 3.6rem, 46px);
+    }
+
+    @include pc {
+      margin-bottom: 2.4rem;
+      font-size: clamp(46px, 5.6rem, 56px);
+    }
+  }
+
+  &__sub-title {
+    display: block;
+    color: $white;
+    font-weight: 700;
+    font-size: clamp(14px, 1.4rem, 20px);
+
+    @include tab {
+      font-size: clamp(20px, 2.2rem, 22px);
+    }
+
+    @include pc {
+      font-size: clamp(20px, 2.2rem, 22px);
+    }
+  }
+
+  &__progress-wrapper {
+
+  }
+
+  &__image-wrapper {
+
+  }
+
+  &__description-wrapper {
+    padding: 0 3rem;
+    position: absolute;
+    top: 66%;
+    left: 0;
+
+    @include tab {
+      padding: 0 4rem;
+    }
+
+    @include pc {
+      padding: 0;
+      width: 44.4rem;
+      top: 50%;
+      left: initial;
+      right: 14rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__description {
+    color: $white;
+    font-size: clamp(13px, 1.3rem, 20px);
+    line-height: 1.5;
+
+    @include tab {
+      font-size: clamp(20px, 2.4rem, 24px);
+    }
+
+    @include pc {
+      font-size: 21px;
+      line-height: 1.8;
+    }
+  }
+
+  &__number-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-50%);
+
+    @include pc {
+      top: 10%;
+      left: 0;
+      right: initial;
+      transform: none;
+    }
+  }
+
+  &__number {
+    color: $light-white;
+    font-family: $poppins;
+    font-weight: 700;
+    font-size: clamp(150px, 15rem, 200px);
+
+    @include tab {
+      font-size: clamp(200px, 20rem, 280px);
+    }
+
+    @include pc {
+      font-size: clamp(440px, 49rem, 490px);
+
+      &.js-small {
+        font-size: clamp(320px, 38rem, 380px);
+      }
+    }
+  }
+
+  &__number-suffix {
+    color: $light-white;
+    font-family: $poppins;
+    font-weight: 700;
+    font-size: clamp(120px, 12rem, 150px);
+    letter-spacing: 0.02em;
+
+    @include tab {
+      font-size: clamp(150px, 15rem, 180px);
+    }
+
+    @include pc {
+      font-size: clamp(150px, 21rem, 210px);
+
+      &.js-small {
+        font-size: clamp(130px, 19rem, 190px);
+      }
     }
   }
 }
