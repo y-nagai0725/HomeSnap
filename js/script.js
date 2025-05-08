@@ -100,6 +100,11 @@ let svgAnimation;
 let historySectionAnimation;
 
 /**
+ * Historyセクションの現在の表示Number
+ */
+let historyCurrentNumber = 1;
+
+/**
  * SVGのアニメーション設定
  *
  * @param {Number} windowWidth ウィンドウ幅
@@ -304,6 +309,7 @@ function changeFvImage() {
  */
 function setHistoryAnimation() {
   const historySection = document.querySelector(".history");
+  const numberElement = document.querySelector(".history__number");
 
   if (historySectionAnimation) {
     historySectionAnimation.scrollTrigger.kill();
@@ -320,7 +326,14 @@ function setHistoryAnimation() {
       aniticipatePin: 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        //console.log(self.progress);
+        if (self.progress >= 1) {
+          return;
+        }
+        const number = Math.floor(self.progress * 10) + 1;
+        if (historyCurrentNumber !== number) {
+          numberElement.innerHTML = number;
+          historyCurrentNumber = number;
+        }
       }
     }
   });
