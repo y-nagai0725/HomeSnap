@@ -728,6 +728,7 @@ img {
   height: 100vh;
   background-color: #dc3c36;
   position: relative;
+  overflow: hidden;
 }
 @media screen and (min-width: 1024px) {
   .history {
@@ -847,6 +848,207 @@ img {
 @media screen and (min-width: 1024px) {
   .history__sub-title {
     font-size: clamp(20px, 2.2rem, 22px);
+  }
+}
+.history__progress-wrapper {
+  width: 24rem;
+  height: 5rem;
+  position: absolute;
+  top: 25%;
+  left: 3rem;
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+  -webkit-transform: translateY(-100%) rotate(90deg);
+          transform: translateY(-100%) rotate(90deg);
+  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .history__progress-wrapper {
+    width: 40.8rem;
+    height: 9.9rem;
+    top: 22.5%;
+    left: 4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__progress-wrapper {
+    width: calc(100% - 28rem);
+    height: auto;
+    top: initial;
+    bottom: 9rem;
+    left: 14rem;
+    -webkit-transform: none;
+            transform: none;
+    overflow: visible;
+  }
+}
+.history__progress-year-wrapper {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 2.7rem 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5.4rem;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .history__progress-year-wrapper {
+    padding: 0 4.2rem 2.8rem;
+    gap: 9rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__progress-year-wrapper {
+    width: 100%;
+    padding: 0 5.75rem 1.6rem;
+    gap: 0;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+.history__progress-year {
+  color: rgba(255, 255, 255, 0.29);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(12px, 1.2rem, 20px);
+  -webkit-transition: color 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  transition: color 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  transition: color 0.3s ease-out, transform 0.3s ease-out;
+  transition: color 0.3s ease-out, transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  position: relative;
+}
+.history__progress-year::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%, calc(100% + 0.4rem));
+          transform: translate(-50%, calc(100% + 0.4rem));
+  width: 1px;
+  height: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.29);
+}
+@media screen and (min-width: 768px) {
+  .history__progress-year {
+    font-size: clamp(20px, 2.2rem, 22px);
+  }
+  .history__progress-year::before {
+    -webkit-transform: translate(-50%, calc(100% + 1.4rem));
+            transform: translate(-50%, calc(100% + 1.4rem));
+    height: 1.4rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__progress-year {
+    font-size: 20px;
+  }
+  .history__progress-year::before {
+    -webkit-transform: translate(-50%, calc(100% + 0.2rem));
+            transform: translate(-50%, calc(100% + 0.2rem));
+  }
+  .history__progress-year::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, calc(-100% - 1rem));
+            transform: translate(-50%, calc(-100% - 1rem));
+    color: #fff;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 700;
+    font-size: 10.5px;
+    white-space: nowrap;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
+  }
+  .history__progress-year.js-large {
+    color: #fff;
+    -webkit-transform: scale(2) translateY(-50%);
+            transform: scale(2) translateY(-50%);
+  }
+  .history__progress-year.js-large::after {
+    opacity: 1;
+  }
+}
+.history__progress-bar {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.29);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.history__progress-active-bar {
+  width: 4rem;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.history__progress-active-bar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  width: 1.6rem;
+  aspect-ratio: 1;
+  border-radius: 100vmax;
+  background-color: #fff;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+@media screen and (min-width: 768px) {
+  .history__progress-active-bar {
+    width: 6.8rem;
+    height: 5px;
+  }
+  .history__progress-active-bar::before {
+    width: 3rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__progress-active-bar {
+    width: 5%;
+    height: 3px;
+  }
+  .history__progress-active-bar::before {
+    width: 2.2rem;
+  }
+}
+.history__progress-title-wrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+@media screen and (min-width: 1024px) {
+  .history__progress-title-wrapper {
+    display: none;
+  }
+}
+.history__progress-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(11px, 1.1rem, 18px);
+}
+@media screen and (min-width: 768px) {
+  .history__progress-title {
+    font-size: clamp(18px, 1.8rem, 20px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__progress-title {
+    font-size: clamp(19px, 2.1rem, 21px);
   }
 }
 .history__description-wrapper {

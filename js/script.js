@@ -305,20 +305,23 @@ function changeFvImage() {
 function setHistoryAnimation() {
   const historySection = document.querySelector(".history");
 
-  if(historySectionAnimation){
+  if (historySectionAnimation) {
+    historySectionAnimation.scrollTrigger.kill();
     historySectionAnimation.kill();
   }
 
-  historySectionAnimation = ScrollTrigger.create({
-    trigger: historySection,
-    start: "top top",
-    end: "+=1000",
-    scrub: 1,
-    pin: true,
-    aniticipatePin: 1,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => {
-      //console.log(self.progress);
+  historySectionAnimation = gsap.timeline({
+    scrollTrigger: {
+      trigger: historySection,
+      start: "top top",
+      end: "+=1000",
+      scrub: 1,
+      pin: true,
+      aniticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        //console.log(self.progress);
+      }
     }
   });
 }
