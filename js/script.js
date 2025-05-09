@@ -102,7 +102,7 @@ let historySectionAnimation;
 /**
  * Historyセクションの現在の表示Number
  */
-let historyCurrentNumber = 1;
+let historyCurrentNumber = 0;
 
 /**
  * SVGのアニメーション設定
@@ -309,7 +309,6 @@ function changeFvImage() {
  */
 function setHistoryAnimation() {
   const historySection = document.querySelector(".history");
-  const numberElement = document.querySelector(".history__number");
 
   if (historySectionAnimation) {
     historySectionAnimation.scrollTrigger.kill();
@@ -326,17 +325,27 @@ function setHistoryAnimation() {
       aniticipatePin: 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        if (self.progress >= 1) {
+        const number = Math.floor(self.progress * 10);
+        if (number >= 10 || historyCurrentNumber === number) {
           return;
-        }
-        const number = Math.floor(self.progress * 10) + 1;
-        if (historyCurrentNumber !== number) {
-          numberElement.innerHTML = number;
-          historyCurrentNumber = number;
+        } else {
+          showHistoryItem(number);
         }
       }
     }
   });
+}
+
+/**
+ * historyアイテム表示
+ *
+ * @param {Number} index 表示対象番号
+ */
+function showHistoryItem(index) {
+  const numberElement = document.querySelector(".history__number");
+
+  numberElement.innerHTML = index;
+  historyCurrentNumber = index;
 }
 
 /**
