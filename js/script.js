@@ -1,3 +1,60 @@
+class HistoryItem {
+  //表示切替用：duration
+  duration = 0.8;
+
+  //表示切替用：y方向への移動量
+  yMove = "-40px";
+
+  constructor(e) {
+    this.description = e.querySelector(".history__description-wrapper");
+    this.image = e.querySelector(".history__image-wrapper");
+    // gsap.set(this.description, {
+    //   autoAlpha: 0,
+    // });
+    // gsap.set(this.image, {
+    //   autoAlpha: 0
+    // });
+  }
+
+  //アイテム表示
+  show() {
+    this.showImage();
+    this.showDescription();
+  }
+
+  //アイテム非表示
+  hide() {
+    this.hideImage();
+    this.hideDescription();
+  }
+
+  //画像表示
+  showImage() {
+    gsap.to(this.image, {
+      duration: this.duration,
+      autoAlpha: 1
+    });
+  }
+
+  //画像非表示
+  hideImage() {
+    gsap.to(this.image, {
+      duration: this.duration,
+      autoAlpha: 0
+    });
+  }
+
+  //説明テキスト表示
+  showDescription() {
+
+  }
+
+  //説明テキスト非表示
+  hideDescription() {
+
+  }
+}
+
 /**
  * GSAPメディアクエリ
  */
@@ -342,10 +399,6 @@ function setHistoryAnimation() {
  * @param {Number} index 表示対象番号
  */
 function showHistoryItem(index) {
-  const numberElement = document.querySelector(".history__number");
-
-  numberElement.innerHTML = index;
-  historyCurrentNumber = index;
 }
 
 /**
