@@ -6,6 +6,8 @@ class HistoryItem {
   yMove = "-40px";
 
   constructor(e) {
+    this.numberPrefix = e.querySelector(".history__number-prefix");
+    this.numberSuffix = e.querySelector(".history__number-suffix");
     this.description = e.querySelector(".history__description-wrapper");
     this.image = e.querySelector(".history__image-wrapper");
     // gsap.set(this.description, {
@@ -160,6 +162,11 @@ let historySectionAnimation;
  * Historyセクションの現在の表示Number
  */
 let historyCurrentNumber = 0;
+
+/**
+ * Historyセクションアイテム
+ */
+let historyItems = [];
 
 /**
  * SVGのアニメーション設定
@@ -386,6 +393,7 @@ function setHistoryAnimation() {
         if (number >= 10 || historyCurrentNumber === number) {
           return;
         } else {
+          console.log(number);
           showHistoryItem(number);
         }
       }
@@ -399,6 +407,15 @@ function setHistoryAnimation() {
  * @param {Number} index 表示対象番号
  */
 function showHistoryItem(index) {
+  const targetItem = historyItems[index];
+  console.log(targetItem.numberPrefix);
+}
+
+function setHistoryItem() {
+  const items = document.querySelectorAll(".history__item");
+  items.forEach(item => {
+    historyItems.push(new HistoryItem(item));
+  });
 }
 
 /**
@@ -429,6 +446,7 @@ window.addEventListener("resize", () => {
  * 初期実行処理
  */
 function init() {
+  setHistoryItem();
   changeFvImage();
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
