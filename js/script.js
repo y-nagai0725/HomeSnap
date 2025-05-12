@@ -49,6 +49,7 @@ class HistoryItem {
     this.description = e.querySelector(".history__description-wrapper");
     this.image = e.querySelector(".history__image-wrapper");
     this.rotate = this.image.classList.contains("even") ? -8 : 8;
+    this.image.style.setProperty("--peseudo-rotate", "0deg");
 
     //sp,tab表示での初期化
     mm.add("(max-width: 1023px)", () => {
@@ -109,7 +110,11 @@ class HistoryItem {
       autoAlpha: 1,
       rotate: -this.rotate,
       onUpdate: () => {
-
+        let rotate = this.currentImageAnimation.progress() * 16;
+        if (this.image.classList.contains("even")) {
+          rotate = -rotate;
+        }
+        this.image.style.setProperty("--peseudo-rotate", rotate + "deg");
       },
     });
   }

@@ -704,6 +704,7 @@
     position: absolute;
     top: 25%;
     left: 27%;
+    --peseudo-rotate: "";
 
     &::after {
       content: "";
@@ -715,6 +716,7 @@
       border-radius: 10px;
       background-color: $dark-red;
       box-shadow: $shadow-black;
+      transform: rotate(var(--peseudo-rotate));
       z-index: -1;
     }
 

@@ -1162,6 +1162,7 @@ img {
   position: absolute;
   top: 25%;
   left: 27%;
+  --peseudo-rotate: "";
 }
 .history__image-wrapper::after {
   content: "";
@@ -1174,6 +1175,8 @@ img {
   background-color: #b52e29;
   -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transform: rotate(var(--peseudo-rotate));
+          transform: rotate(var(--peseudo-rotate));
   z-index: -1;
 }
 @media screen and (min-width: 768px) {
