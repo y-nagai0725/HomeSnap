@@ -1066,6 +1066,7 @@ img {
   position: absolute;
   top: 66%;
   left: 0;
+  opacity: 0;
 }
 @media screen and (min-width: 768px) {
   .history__description-wrapper {
@@ -1099,15 +1100,16 @@ img {
     line-height: 1.8;
   }
 }
-.history__number {
+.history__number-wrapper {
   position: absolute;
   top: 0;
   right: 0;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  opacity: 0;
 }
 @media screen and (min-width: 1024px) {
-  .history__number {
+  .history__number-wrapper {
     top: 10%;
     left: 0;
     right: initial;
@@ -1116,7 +1118,7 @@ img {
   }
 }
 .history__number-prefix {
-  color: rgba(255, 255, 255, 0.29);
+  color: rgba(255, 255, 255, 0.1);
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: clamp(150px, 15rem, 200px);
@@ -1130,12 +1132,12 @@ img {
   .history__number-prefix {
     font-size: clamp(440px, 49rem, 490px);
   }
-  .history__number-prefix.js-small {
+  .history__number-prefix.small {
     font-size: clamp(320px, 38rem, 380px);
   }
 }
 .history__number-suffix {
-  color: rgba(255, 255, 255, 0.29);
+  color: rgba(255, 255, 255, 0.1);
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: clamp(120px, 12rem, 150px);
@@ -1150,10 +1152,49 @@ img {
   .history__number-suffix {
     font-size: clamp(150px, 21rem, 210px);
   }
-  .history__number-suffix.js-small {
+  .history__number-suffix.small {
     font-size: clamp(130px, 19rem, 190px);
   }
 }
+.history__image-wrapper {
+  width: 22.5rem;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 25%;
+  left: 27%;
+}
+.history__image-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #b52e29;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+@media screen and (min-width: 768px) {
+  .history__image-wrapper {
+    width: 40rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .history__image-wrapper {
+    width: 55rem;
+    left: 33%;
+  }
+}
+.history__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
 .contents {
   margin-bottom: 10rem;
 }

@@ -1,59 +1,184 @@
 class HistoryItem {
   //表示切替用：duration
-  duration = 0.8;
+  duration = 0.6;
+
+  //
+  easing = gsapEasing;
 
   //表示切替用：y方向への移動量
-  yMove = "-40px";
+  yMove = "40px";
 
+  /**
+   *
+   */
+  number;
+
+  /**
+   *
+   */
+  currentNumberAnimation;
+
+  /**
+   *
+   */
+  description;
+
+  /**
+   *
+   */
+  currentDescriptionAnimation;
+
+  /**
+   *
+   */
+  image;
+
+  /**
+   *
+   */
+  currentImageAnimation;
+
+  rotate;
+
+  /**
+   *
+   * @param {*} e
+   */
   constructor(e) {
-    this.numberPrefix = e.querySelector(".history__number-prefix");
-    this.numberSuffix = e.querySelector(".history__number-suffix");
+    this.number = e.querySelector(".history__number-wrapper");
     this.description = e.querySelector(".history__description-wrapper");
     this.image = e.querySelector(".history__image-wrapper");
-    // gsap.set(this.description, {
-    //   autoAlpha: 0,
-    // });
-    // gsap.set(this.image, {
-    //   autoAlpha: 0
-    // });
+    this.rotate = this.image.classList.contains("even") ? -8 : 8;
+
+    //sp,tab表示での初期化
+    mm.add("(max-width: 1023px)", () => {
+      gsap.set(this.number, {
+        autoAlpha: 0,
+        y: this.yMove,
+        yPercent: -50,
+      });
+
+      gsap.set(this.description, {
+        autoAlpha: 0,
+        y: this.yMove,
+      });
+    });
+
+    //pc表示での初期化
+    mm.add("(min-width: 1024px)", () => {
+      gsap.set(this.number, {
+        autoAlpha: 0,
+        y: this.yMove,
+      });
+
+      gsap.set(this.description, {
+        autoAlpha: 0,
+        y: this.yMove,
+        yPercent: -50,
+      });
+    });
+
+    gsap.set(this.image, {
+      autoAlpha: 0,
+      rotate: this.rotate,
+    });
   }
 
   //アイテム表示
   show() {
-    this.showImage();
+    this.showNumber();
     this.showDescription();
+    this.showImage();
   }
 
   //アイテム非表示
   hide() {
-    this.hideImage();
+    this.hideNumber();
     this.hideDescription();
+    this.hideImage();
   }
 
   //画像表示
   showImage() {
-    gsap.to(this.image, {
+    if (this.currentImageAnimation) {
+      this.currentImageAnimation.kill();
+    }
+    this.currentImageAnimation = gsap.to(this.image, {
       duration: this.duration,
-      autoAlpha: 1
+      ease: this.easing,
+      autoAlpha: 1,
+      rotate: -this.rotate,
+      onUpdate: () => {
+
+      },
     });
   }
 
   //画像非表示
   hideImage() {
-    gsap.to(this.image, {
+    if (this.currentImageAnimation) {
+      this.currentImageAnimation.kill();
+    }
+    this.currentImageAnimation = gsap.to(this.image, {
       duration: this.duration,
-      autoAlpha: 0
+      ease: this.easing,
+      autoAlpha: 0,
+      rotate: this.rotate,
+    });
+  }
+
+  /**
+   *
+   */
+  showNumber() {
+    if (this.currentNumberAnimation) {
+      this.currentNumberAnimation.kill();
+    }
+    this.currentNumberAnimation = gsap.to(this.number, {
+      duration: this.duration,
+      ease: this.easing,
+      autoAlpha: 1,
+      y: 0,
+    });
+  }
+
+  /**
+   *
+   */
+  hideNumber() {
+    if (this.currentNumberAnimation) {
+      this.currentNumberAnimation.kill();
+    }
+    this.currentNumberAnimation = gsap.to(this.number, {
+      duration: 0,
+      autoAlpha: 0,
+      y: this.yMove,
     });
   }
 
   //説明テキスト表示
   showDescription() {
-
+    if (this.currentDescriptionAnimation) {
+      this.currentDescriptionAnimation.kill();
+    }
+    this.currentDescriptionAnimation = gsap.to(this.description, {
+      duration: this.duration,
+      ease: this.easing,
+      autoAlpha: 1,
+      y: 0,
+    });
   }
 
   //説明テキスト非表示
   hideDescription() {
-
+    if (this.currentDescriptionAnimation) {
+      this.currentDescriptionAnimation.kill();
+    }
+    this.currentDescriptionAnimation = gsap.to(this.description, {
+      duration: 0,
+      autoAlpha: 0,
+      y: this.yMove,
+    });
   }
 }
 
@@ -161,7 +286,7 @@ let historySectionAnimation;
 /**
  * Historyセクションの現在の表示Number
  */
-let historyCurrentNumber = 0;
+let historyCurrentNumber = -1;
 
 /**
  * Historyセクションアイテム
@@ -383,18 +508,22 @@ function setHistoryAnimation() {
     scrollTrigger: {
       trigger: historySection,
       start: "top top",
-      end: "+=1000",
+      end: "+=5000",
       scrub: 1,
       pin: true,
       aniticipatePin: 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        const number = Math.floor(self.progress * 10);
-        if (number >= 10 || historyCurrentNumber === number) {
+        let targetNumber = Math.floor(self.progress * historyItems.length);
+        if (targetNumber === historyItems.length) {
+          targetNumber--;
+        }
+
+        if (historyCurrentNumber === targetNumber) {
           return;
         } else {
-          console.log(number);
-          showHistoryItem(number);
+          showHistoryItem(targetNumber, historyCurrentNumber);
+          historyCurrentNumber = targetNumber;
         }
       }
     }
@@ -404,13 +533,22 @@ function setHistoryAnimation() {
 /**
  * historyアイテム表示
  *
- * @param {Number} index 表示対象番号
+ * @param {Number} targetIndex 表示対象番号
+ * @param {Number} currentIndex 現在表示対象番号
  */
-function showHistoryItem(index) {
-  const targetItem = historyItems[index];
-  console.log(targetItem.numberPrefix);
+function showHistoryItem(targetIndex, currentIndex) {
+  if (currentIndex !== -1) {
+    const currentItem = historyItems[currentIndex];
+    currentItem.hide();
+  }
+
+  const targetItem = historyItems[targetIndex];
+  targetItem.show();
 }
 
+/**
+ * historyアイテム初期設定
+ */
 function setHistoryItem() {
   const items = document.querySelectorAll(".history__item");
   items.forEach(item => {
