@@ -38,6 +38,10 @@ class HistoryItem {
    */
   currentImageAnimation;
 
+  title;
+
+  year;
+
   /**
    *
    * @param {*} e
@@ -83,6 +87,22 @@ class HistoryItem {
       "--image-rotate": this.startRotate,
       "--peseudo-rotate": this.endRotate,
     });
+
+    //タイトル作成、追加、初期化
+    this.title = document.createElement("span");
+    this.title.className = "history__progress-title";
+    this.title.textContent = e.querySelector(".history__item-title").textContent;
+    document.querySelector(".history__progress-title-wrapper").append(this.title);
+    gsap.set(this.title, {
+      autoAlpha: 0,
+    });
+
+    //year
+    this.year = document.createElement("span");
+    this.year.className = "history__progress-year";
+    this.year.textContent = e.querySelector(".history__item-year").textContent;
+    this.year.dataset.title = this.title.textContent;
+    document.querySelector(".history__progress-bar").before(this.year);
   }
 
   //アイテム表示
@@ -90,6 +110,8 @@ class HistoryItem {
     this.showNumber();
     this.showDescription();
     this.showImage();
+    this.showTitle();
+    this.activeYear()
   }
 
   //アイテム非表示
@@ -97,6 +119,38 @@ class HistoryItem {
     this.hideNumber();
     this.hideDescription();
     this.hideImage();
+    this.hideTitle();
+    this.inactiveYear()
+  }
+
+  activeYear() {
+    this.year.classList.add("js-large");
+  }
+
+  inactiveYear() {
+    this.year.classList.remove("js-large");
+  }
+
+  showTitle() {
+    if (this.currentTitleAnimation) {
+      this.currentTitleAnimation.kill();
+    }
+    this.currentTitleAnimation = gsap.to(this.title, {
+      duration: this.duration,
+      ease: this.easing,
+      autoAlpha: 1,
+    });
+  }
+
+  hideTitle() {
+    if (this.currentTitleAnimation) {
+      this.currentTitleAnimation.kill();
+    }
+    this.currentTitleAnimation = gsap.to(this.title, {
+      duration: this.duration,
+      ease: this.easing,
+      autoAlpha: 0,
+    });
   }
 
   //画像表示

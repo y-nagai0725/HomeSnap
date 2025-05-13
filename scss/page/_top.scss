@@ -464,8 +464,8 @@
     font-weight: 700;
     font-size: clamp(12px, 1.2rem, 20px);
     transition:
-      color 0.3s ease-out,
-      transform 0.3s ease-out;
+      color 0.4s ease-out,
+      transform 0.4s ease-out;
     position: relative;
 
     &::before {
@@ -507,12 +507,12 @@
         font-size: 10.5px;
         white-space: nowrap;
         opacity: 0;
-        transition: opacity 0.3s ease-out;
+        transition: opacity 0.4s ease-out;
       }
 
       &.js-large {
         color: $white;
-        transform: scale(2) translateY(-50%);
+        transform: scale(1.7) translateY(-50%);
 
         &::after {
           opacity: 1;
@@ -572,6 +572,7 @@
   }
 
   &__progress-title-wrapper {
+    width: 100%;
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -583,6 +584,10 @@
   }
 
   &__progress-title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     color: $white;
     font-weight: 700;
     font-size: clamp(11px, 1.1rem, 18px);
@@ -592,7 +597,7 @@
     }
 
     @include pc {
-      font-size: clamp(19px, 2.1rem, 21px);
+      display: none;
     }
   }
 
@@ -606,6 +611,11 @@
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+
+  &__item-year,
+  &__item-title {
+    display: none;
   }
 
   &__description-wrapper {
