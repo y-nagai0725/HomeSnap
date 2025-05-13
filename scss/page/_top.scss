@@ -704,7 +704,9 @@
     position: absolute;
     top: 25%;
     left: 27%;
+    z-index: 1;
     --peseudo-rotate: "";
+    --image-rotate: "";
 
     &::after {
       content: "";
@@ -735,6 +737,7 @@
     height: 100%;
     border-radius: 10px;
     box-shadow: $shadow-black;
+    transform: rotate(var(--image-rotate));
   }
 }
 

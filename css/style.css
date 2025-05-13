@@ -1162,7 +1162,9 @@ img {
   position: absolute;
   top: 25%;
   left: 27%;
+  z-index: 1;
   --peseudo-rotate: "";
+  --image-rotate: "";
 }
 .history__image-wrapper::after {
   content: "";
@@ -1196,6 +1198,8 @@ img {
   border-radius: 10px;
   -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transform: rotate(var(--image-rotate));
+          transform: rotate(var(--image-rotate));
 }
 
 .contents {

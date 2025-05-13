@@ -1,6 +1,6 @@
 class HistoryItem {
   //表示切替用：duration
-  duration = 0.6;
+  duration = 0.4;
 
   //
   easing = gsapEasing;
@@ -38,18 +38,17 @@ class HistoryItem {
    */
   currentImageAnimation;
 
-  rotate;
-
   /**
    *
    * @param {*} e
    */
-  constructor(e) {
+  constructor(e, index) {
     this.number = e.querySelector(".history__number-wrapper");
     this.description = e.querySelector(".history__description-wrapper");
     this.image = e.querySelector(".history__image-wrapper");
-    this.rotate = this.image.classList.contains("even") ? -8 : 8;
-    this.image.style.setProperty("--peseudo-rotate", "0deg");
+    this.isEven = index % 2 !== 0;
+    this.startRotate = this.isEven ? "-8deg" : "8deg";
+    this.endRotate = this.isEven ? "8deg" : "-8deg";
 
     //sp,tab表示での初期化
     mm.add("(max-width: 1023px)", () => {
@@ -81,7 +80,8 @@ class HistoryItem {
 
     gsap.set(this.image, {
       autoAlpha: 0,
-      rotate: this.rotate,
+      "--image-rotate": this.startRotate,
+      "--peseudo-rotate": this.endRotate,
     });
   }
 
@@ -108,14 +108,8 @@ class HistoryItem {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 1,
-      rotate: -this.rotate,
-      onUpdate: () => {
-        let rotate = this.currentImageAnimation.progress() * 16;
-        if (this.image.classList.contains("even")) {
-          rotate = -rotate;
-        }
-        this.image.style.setProperty("--peseudo-rotate", rotate + "deg");
-      },
+      "--image-rotate": this.endRotate,
+      "--peseudo-rotate": this.startRotate,
     });
   }
 
@@ -128,7 +122,8 @@ class HistoryItem {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 0,
-      rotate: this.rotate,
+      "--image-rotate": this.startRotate,
+      "--peseudo-rotate": this.endRotate,
     });
   }
 
@@ -556,8 +551,8 @@ function showHistoryItem(targetIndex, currentIndex) {
  */
 function setHistoryItem() {
   const items = document.querySelectorAll(".history__item");
-  items.forEach(item => {
-    historyItems.push(new HistoryItem(item));
+  items.forEach((item, index) => {
+    historyItems.push(new HistoryItem(item, index));
   });
 }
 
