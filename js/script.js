@@ -649,6 +649,10 @@ function setHistoryItem() {
   items.forEach((item, index) => {
     historyItems.push(new HistoryItem(item, index));
   });
+
+  //
+  const progressYearWrapper = document.querySelector(".history__progress-year-wrapper");
+  progressYearWrapper.style.setProperty("--padding-adjustment", (100 / historyItems.length / 2) + "%");
 }
 
 /**
@@ -676,7 +680,7 @@ window.addEventListener("resize", () => {
 
   mm.add("(min-width: 1024px)", () => {
     gsap.to(".history__progress-year-wrapper", {
-      clearProps: true,
+      clearProps: "transform",
     });
   });
 });

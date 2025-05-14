@@ -77,11 +77,11 @@
     margin-bottom: 6.4rem;
 
     &--en {
-      font-size: clamp(64px, 7.7rem, 77px);
+      font-size: clamp(7.7rem, 7.7rem, 77px);
     }
 
     &--ja {
-      font-size: clamp(26px, 2.8rem, 28px);
+      font-size: clamp(2.8rem, 2.8rem, 28px);
     }
   }
 }

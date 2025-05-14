@@ -794,10 +794,10 @@ img {
     margin-bottom: 6.4rem;
   }
   .history__title--en {
-    font-size: clamp(64px, 7.7rem, 77px);
+    font-size: clamp(7.7rem, 7.7rem, 77px);
   }
   .history__title--ja {
-    font-size: clamp(26px, 2.8rem, 28px);
+    font-size: clamp(2.8rem, 2.8rem, 28px);
   }
 }
 .history__title--en {
@@ -831,7 +831,7 @@ img {
 @media screen and (min-width: 1024px) {
   .history__period {
     margin-bottom: 2.4rem;
-    font-size: clamp(46px, 5.6rem, 56px);
+    font-size: clamp(5.6rem, 5.6rem, 56px);
   }
 }
 .history__sub-title {
@@ -847,7 +847,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .history__sub-title {
-    font-size: clamp(20px, 2.2rem, 22px);
+    font-size: clamp(2.2rem, 2.2rem, 22px);
   }
 }
 .history__progress-wrapper {
@@ -898,6 +898,7 @@ img {
   display: flex;
   gap: 5.4rem;
   position: relative;
+  --padding-adjustment: 0%;
 }
 @media screen and (min-width: 768px) {
   .history__progress-year-wrapper {
@@ -908,7 +909,7 @@ img {
 @media screen and (min-width: 1024px) {
   .history__progress-year-wrapper {
     width: 100%;
-    padding: 0 5.75rem 1.6rem;
+    padding: 0 calc(var(--padding-adjustment) - 2.5rem) 1.6rem;
     gap: 0;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -916,6 +917,8 @@ img {
   }
 }
 .history__progress-year {
+  width: 3rem;
+  text-align: center;
   color: rgba(255, 255, 255, 0.29);
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -939,6 +942,7 @@ img {
 }
 @media screen and (min-width: 768px) {
   .history__progress-year {
+    width: 5.5rem;
     font-size: clamp(20px, 2.2rem, 22px);
   }
   .history__progress-year::before {
@@ -949,7 +953,8 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .history__progress-year {
-    font-size: 20px;
+    width: 5rem;
+    font-size: clamp(2rem, 2rem, 20px);
   }
   .history__progress-year::before {
     -webkit-transform: translate(-50%, calc(100% + 0.2rem));
@@ -965,7 +970,7 @@ img {
     color: #fff;
     font-family: "Noto Sans JP", sans-serif;
     font-weight: 700;
-    font-size: 10.5px;
+    font-size: 1.05rem;
     white-space: nowrap;
     opacity: 0;
     -webkit-transition: opacity 0.4s ease-out;
@@ -1115,7 +1120,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .history__description {
-    font-size: 21px;
+    font-size: clamp(2.1rem, 2.1rem, 21px);
     line-height: 1.8;
   }
 }
@@ -1149,10 +1154,10 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .history__number-prefix {
-    font-size: clamp(440px, 49rem, 490px);
+    font-size: clamp(49rem, 49rem, 490px);
   }
   .history__number-prefix.small {
-    font-size: clamp(320px, 38rem, 380px);
+    font-size: clamp(38rem, 38rem, 380px);
   }
 }
 .history__number-suffix {
@@ -1169,10 +1174,10 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .history__number-suffix {
-    font-size: clamp(150px, 21rem, 210px);
+    font-size: clamp(21rem, 21rem, 210px);
   }
   .history__number-suffix.small {
-    font-size: clamp(130px, 19rem, 190px);
+    font-size: clamp(19rem, 19rem, 190px);
   }
 }
 .history__image-wrapper {
@@ -1283,10 +1288,10 @@ img {
     margin-bottom: 6.4rem;
   }
   .contents__title--en {
-    font-size: clamp(64px, 7.7rem, 77px);
+    font-size: clamp(7.7rem, 7.7rem, 77px);
   }
   .contents__title--ja {
-    font-size: clamp(26px, 2.8rem, 28px);
+    font-size: clamp(2.8rem, 2.8rem, 28px);
   }
 }
 .contents__text {
@@ -1375,10 +1380,10 @@ img {
     margin-bottom: 6.4rem;
   }
   .events__title--en {
-    font-size: clamp(64px, 7.7rem, 77px);
+    font-size: clamp(7.7rem, 7.7rem, 77px);
   }
   .events__title--ja {
-    font-size: clamp(26px, 2.8rem, 28px);
+    font-size: clamp(2.8rem, 2.8rem, 28px);
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1449,9 +1454,9 @@ img {
     margin-bottom: 6.4rem;
   }
   .posts__title--en {
-    font-size: clamp(64px, 7.7rem, 77px);
+    font-size: clamp(7.7rem, 7.7rem, 77px);
   }
   .posts__title--ja {
-    font-size: clamp(26px, 2.8rem, 28px);
+    font-size: clamp(2.8rem, 2.8rem, 28px);
   }
 }/*# sourceMappingURL=style.css.map */
