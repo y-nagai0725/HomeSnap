@@ -42,6 +42,10 @@ class HistoryItem {
 
   year;
 
+  progressActiveBar = document.querySelector(".history__progress-active-bar");
+
+  progressYearWrapper = document.querySelector(".history__progress-year-wrapper");
+
   /**
    *
    * @param {*} e
@@ -53,6 +57,7 @@ class HistoryItem {
     this.isEven = index % 2 !== 0;
     this.startRotate = this.isEven ? "-8deg" : "8deg";
     this.endRotate = this.isEven ? "8deg" : "-8deg";
+    this.index = index;
 
     //sp,tab表示での初期化
     mm.add("(max-width: 1023px)", () => {
@@ -111,7 +116,8 @@ class HistoryItem {
     this.showDescription();
     this.showImage();
     this.showTitle();
-    this.activeYear()
+    this.activeYear();
+    this.updateProgressBar();
   }
 
   //アイテム非表示
@@ -121,6 +127,31 @@ class HistoryItem {
     this.hideImage();
     this.hideTitle();
     this.inactiveYear()
+  }
+
+  updateProgressBar() {
+    const startPercent = (100 / historyItems.length / 2);
+    const plusPercent = (100 / historyItems.length) * this.index;
+
+    mm.add("(max-width: 1023px)", () => {
+      gsap.timeline().to(this.progressActiveBar, {
+        duration: this.duration,
+        ease: this.easing,
+        width: (startPercent + plusPercent) + "%",
+      }).to(this.progressYearWrapper, {
+        duration: this.duration,
+        ease: this.easing,
+        xPercent: (-(100 / historyItems.length * 0.8) * this.index),
+      }, "<");
+    });
+
+    mm.add("(min-width: 1024px)", () => {
+      gsap.timeline().to(this.progressActiveBar, {
+        duration: this.duration,
+        ease: this.easing,
+        width: (startPercent + plusPercent) + "%",
+      });
+    });
   }
 
   activeYear() {
@@ -552,6 +583,8 @@ function changeFvImage() {
  */
 function setHistoryAnimation() {
   const historySection = document.querySelector(".history");
+  const historyProgressWrapper = document.querySelector(".history__progress-wrapper");
+  const historyItemList = document.querySelector(".history__item-list");
 
   if (historySectionAnimation) {
     historySectionAnimation.scrollTrigger.kill();
@@ -567,6 +600,14 @@ function setHistoryAnimation() {
       pin: true,
       aniticipatePin: 1,
       invalidateOnRefresh: true,
+      onEnter: () => {
+        historyProgressWrapper.classList.add("js-showed");
+        historyItemList.classList.add("js-showed");
+      },
+      onLeaveBack: () => {
+        historyProgressWrapper.classList.remove("js-showed");
+        historyItemList.classList.remove("js-showed");
+      },
       onUpdate: (self) => {
         let targetNumber = Math.floor(self.progress * historyItems.length);
         if (targetNumber === historyItems.length) {
@@ -632,6 +673,12 @@ window.addEventListener("resize", () => {
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
   setHistoryAnimation();
+
+  mm.add("(min-width: 1024px)", () => {
+    gsap.to(".history__progress-year-wrapper", {
+      clearProps: true,
+    });
+  });
 });
 
 /**

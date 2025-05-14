@@ -861,6 +861,12 @@ img {
   -webkit-transform: translateY(-100%) rotate(90deg);
           transform: translateY(-100%) rotate(90deg);
   overflow: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+.history__progress-wrapper.js-showed {
+  opacity: 1;
 }
 @media screen and (min-width: 768px) {
   .history__progress-wrapper {
@@ -983,7 +989,7 @@ img {
   left: 0;
 }
 .history__progress-active-bar {
-  width: 4rem;
+  width: 0;
   height: 3px;
   background-color: #fff;
   position: absolute;
@@ -1008,7 +1014,6 @@ img {
 }
 @media screen and (min-width: 768px) {
   .history__progress-active-bar {
-    width: 6.8rem;
     height: 5px;
   }
   .history__progress-active-bar::before {
@@ -1017,7 +1022,6 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .history__progress-active-bar {
-    width: 5%;
     height: 3px;
   }
   .history__progress-active-bar::before {
@@ -1061,6 +1065,12 @@ img {
   position: absolute;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+.history__item-list.js-showed {
+  opacity: 1;
 }
 .history__item {
   position: absolute;
