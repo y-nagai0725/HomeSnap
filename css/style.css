@@ -411,31 +411,6 @@ img {
     right: 14rem;
   }
 }
-.fv__year-10th {
-  color: #dc3c36;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: clamp(50px, 5rem, 100px);
-}
-.fv__year-10th--small {
-  font-size: clamp(30px, 3rem, 60px);
-}
-@media screen and (min-width: 768px) {
-  .fv__year-10th {
-    font-size: clamp(100px, 10rem, 120px);
-  }
-  .fv__year-10th--small {
-    font-size: clamp(60px, 6rem, 65px);
-  }
-}
-@media screen and (min-width: 1024px) {
-  .fv__year-10th {
-    font-size: clamp(120px, 14rem, 140px);
-  }
-  .fv__year-10th--small {
-    font-size: clamp(65px, 7rem, 70px);
-  }
-}
 .fv__year-prefix {
   color: #dc3c36;
   font-family: "Poppins", sans-serif;
@@ -449,7 +424,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .fv__year-prefix {
-    font-size: clamp(120px, 14rem, 140px);
+    font-size: clamp(14rem, 14rem, 140px);
   }
 }
 .fv__year-suffix {
@@ -465,7 +440,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .fv__year-suffix {
-    font-size: clamp(65px, 7rem, 70px);
+    font-size: clamp(7rem, 7rem, 70px);
   }
 }
 .fv__year-text {
@@ -481,7 +456,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .fv__year-text {
-    font-size: clamp(30px, 3.5rem, 35px);
+    font-size: clamp(3.5rem, 3.5rem, 35px);
   }
 }
 .fv__text {
@@ -504,7 +479,7 @@ img {
   .fv__text {
     right: 14rem;
     bottom: 11rem;
-    font-size: clamp(22px, 2.5rem, 25px);
+    font-size: clamp(2.5rem, 2.5rem, 25px);
   }
 }
 .fv__anniversary-logo {
@@ -559,7 +534,7 @@ img {
   .fv__scroll-line {
     left: 4rem;
     width: 6px;
-    height: 128px;
+    height: 12.8rem;
   }
   .fv__scroll-line::before {
     width: 26px;
@@ -570,7 +545,7 @@ img {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
-    height: 100px;
+    height: 10rem;
   }
 }
 .fv__message-wrapper {
@@ -608,7 +583,7 @@ img {
 @media screen and (min-width: 1024px) {
   .fv__message {
     text-align: center;
-    font-size: 21px;
+    font-size: 2.1rem;
     line-height: 2.3;
   }
   .fv__message .br-pc {
@@ -710,7 +685,7 @@ img {
 }
 @media screen and (min-width: 1024px) {
   .fv__image-wrapper {
-    width: 860px;
+    width: 86rem;
   }
 }
 .fv__image {

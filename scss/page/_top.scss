@@ -37,33 +37,6 @@
     }
   }
 
-  &__year-10th {
-    color: $red;
-    font-family: $poppins;
-    font-weight: 700;
-    font-size: clamp(50px, 5rem, 100px);
-
-    &--small {
-      font-size: clamp(30px, 3rem, 60px);
-    }
-
-    @include tab {
-      font-size: clamp(100px, 10rem, 120px);
-
-      &--small {
-        font-size: clamp(60px, 6rem, 65px);
-      }
-    }
-
-    @include pc {
-      font-size: clamp(120px, 14rem, 140px);
-
-      &--small {
-        font-size: clamp(65px, 7rem, 70px);
-      }
-    }
-  }
-
   &__year-prefix {
     color: $red;
     font-family: $poppins;
@@ -75,7 +48,7 @@
     }
 
     @include pc {
-      font-size: clamp(120px, 14rem, 140px);
+      font-size: clamp(14rem, 14rem, 140px);
     }
   }
 
@@ -90,7 +63,7 @@
     }
 
     @include pc {
-      font-size: clamp(65px, 7rem, 70px);
+      font-size: clamp(7rem, 7rem, 70px);
     }
   }
 
@@ -105,7 +78,7 @@
     }
 
     @include pc {
-      font-size: clamp(30px, 3.5rem, 35px);
+      font-size: clamp(3.5rem, 3.5rem, 35px);
     }
   }
 
@@ -127,7 +100,7 @@
     @include pc {
       right: 14rem;
       bottom: 11rem;
-      font-size: clamp(22px, 2.5rem, 25px);
+      font-size: clamp(2.5rem, 2.5rem, 25px);
     }
   }
 
@@ -180,7 +153,7 @@
     @include tab {
       left: 4rem;
       width: 6px;
-      height: 128px;
+      height: 12.8rem;
 
       &::before {
         width: 26px;
@@ -190,7 +163,7 @@
     @include pc {
       left: 50%;
       transform: translateX(-50%);
-      height: 100px;
+      height: 10rem;
     }
   }
 
@@ -218,7 +191,7 @@
 
     @include pc {
       text-align: center;
-      font-size: 21px;
+      font-size: 2.1rem;
       line-height: 2.3;
 
       .br-pc {
@@ -320,7 +293,7 @@
     }
 
     @include pc {
-      width: 860px;
+      width: 86rem;
     }
   }
 
