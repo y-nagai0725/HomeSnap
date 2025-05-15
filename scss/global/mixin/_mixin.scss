@@ -21,6 +21,14 @@
   }
 }
 
+@mixin hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
 @mixin section-inner {
   padding: 0 3rem;
 
