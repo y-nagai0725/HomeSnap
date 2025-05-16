@@ -655,6 +655,32 @@ function setHistoryItem() {
   progressYearWrapper.style.setProperty("--padding-adjustment", (100 / historyItems.length / 2) + "%");
 }
 
+function setCircleButtonHoverAnimation() {
+  const circleButtons = document.querySelectorAll(".circle-button");
+
+  circleButtons.forEach(button => {
+    const circleWrapper = button.querySelector(".circle-button-wrapper");
+    const circle = button.querySelector(".circle");
+
+    const hoverAnimation = gsap.timeline({
+      paused: true,
+    }).to(circleWrapper, {
+
+    }).fromTo(circle, {
+      strokeDasharray: "0, 30",
+    }, {
+      strokeDasharray: "30, 30",
+    }, "<");
+
+    button.addEventListener("mouseover", () => {
+      hoverAnimation.play();
+    });
+    button.addEventListener("mouseleave", () => {
+      hoverAnimation.reverse();
+    });
+  });
+}
+
 /**
  * トップへ戻るボタンクリックイベント
  */
@@ -689,10 +715,11 @@ window.addEventListener("resize", () => {
  * 初期実行処理
  */
 function init() {
-  setHistoryItem();
+  setCircleButtonHoverAnimation();
   changeFvImage();
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
+  setHistoryItem();
   setHistoryAnimation();
 }
 

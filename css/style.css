@@ -1467,10 +1467,10 @@ img {
 }
 .contents__button-svg {
   width: 100%;
-  display: none;
 }
-.contents__button-svg circle {
-  fill: #dc3c36;
+.contents__button-svg .circle {
+  fill: none;
+  stroke: #dc3c36;
 }
 
 .events {

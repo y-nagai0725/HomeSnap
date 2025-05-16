@@ -944,10 +944,10 @@
 
   &__button-svg {
     width: 100%;
-    display: none;
 
-    circle {
-      fill: $red;
+    .circle {
+      fill: none;
+      stroke: $red;
     }
   }
 }
