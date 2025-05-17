@@ -1439,6 +1439,7 @@ img {
   width: 0.6rem;
   height: 0.8rem;
   background-image: url(../images/caret-right.svg);
+  background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -1471,6 +1472,11 @@ img {
 .contents__button-svg .circle {
   fill: none;
   stroke: #dc3c36;
+  stroke-width: 20;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 
 .events {

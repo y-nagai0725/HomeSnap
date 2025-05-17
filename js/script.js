@@ -661,15 +661,19 @@ function setCircleButtonHoverAnimation() {
   circleButtons.forEach(button => {
     const circleWrapper = button.querySelector(".circle-button-wrapper");
     const circle = button.querySelector(".circle");
+    //const outerR = circle.getAttribute("cx");
+    //const strokeWidth = circle.style.strokeWidth;
+    //console.log(strokeWidth);
+    const circumference = 2 * Math.PI * 40;
 
     const hoverAnimation = gsap.timeline({
       paused: true,
     }).to(circleWrapper, {
 
     }).fromTo(circle, {
-      strokeDasharray: "0, 30",
+      strokeDasharray: `0, ${circumference}`,
     }, {
-      strokeDasharray: "30, 30",
+      strokeDasharray: `${circumference}, ${circumference}`,
     }, "<");
 
     button.addEventListener("mouseover", () => {

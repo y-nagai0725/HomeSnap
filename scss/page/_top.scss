@@ -914,6 +914,7 @@
       width: 0.6rem;
       height: 0.8rem;
       background-image: url(../images/caret-right.svg);
+      background-size: cover;
       background-position: 50% 50%;
       background-repeat: no-repeat;
       overflow: hidden;
@@ -948,6 +949,9 @@
     .circle {
       fill: none;
       stroke: $red;
+      stroke-width: 20;
+      transform-origin: center;
+      transform: rotate(-90deg);
     }
   }
 }
