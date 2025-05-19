@@ -870,6 +870,7 @@
     font-weight: 700;
     font-size: clamp(13px, 1.3rem, 20px);
     line-height: 1.5;
+    z-index: -1;
 
     @include tab {
       width: calc(100% - 8rem);
@@ -891,6 +892,8 @@
     border-radius: 100vmax;
     background-color: $light-white;
     box-shadow: $shadow-black;
+    z-index: -1;
+    --background-position-x: 0;
 
     &::before {
       content: "";
@@ -915,7 +918,7 @@
       height: 0.8rem;
       background-image: url(../images/caret-right.svg);
       background-size: cover;
-      background-position: 50% 50%;
+      background-position: var(--background-position-x) 50%;
       background-repeat: no-repeat;
       overflow: hidden;
     }
@@ -949,7 +952,7 @@
     .circle {
       fill: none;
       stroke: $red;
-      stroke-width: 20;
+      stroke-width: 2;
       transform-origin: center;
       transform: rotate(-90deg);
     }

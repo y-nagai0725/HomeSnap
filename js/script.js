@@ -655,32 +655,60 @@ function setHistoryItem() {
   progressYearWrapper.style.setProperty("--padding-adjustment", (100 / historyItems.length / 2) + "%");
 }
 
-function setCircleButtonHoverAnimation() {
+/**
+ * リンクボタンのホバーアニメーション設定
+ */
+function setLinkButtonHoverAnimation() {
   const circleButtons = document.querySelectorAll(".circle-button");
 
   circleButtons.forEach(button => {
     const circleWrapper = button.querySelector(".circle-button-wrapper");
     const circle = button.querySelector(".circle");
-    //const outerR = circle.getAttribute("cx");
-    //const strokeWidth = circle.style.strokeWidth;
-    //console.log(strokeWidth);
-    const circumference = 2 * Math.PI * 40;
+    const r = circle.getAttribute("r");
+    const circumference = 2 * Math.PI * r;
 
-    const hoverAnimation = gsap.timeline({
+    //svgのcircle要素のアニメーション
+    const circleAnimation = gsap.timeline({
       paused: true,
-    }).to(circleWrapper, {
-
     }).fromTo(circle, {
       strokeDasharray: `0, ${circumference}`,
     }, {
+      duration: 0.4,
+      ease: gsapEasing,
       strokeDasharray: `${circumference}, ${circumference}`,
-    }, "<");
-
-    button.addEventListener("mouseover", () => {
-      hoverAnimation.play();
     });
+
+    //右矢印のアニメーション
+    const caretAnimation = gsap.timeline({
+      paused: true,
+    }).to(circleWrapper, {
+      duration: 0.3,
+      ease: gsapEasing,
+      keyframes: {
+        "0%": {
+          "--background-position-x": "0"
+        },
+        "50%": {
+          "--background-position-x": "10px"
+        },
+        "50.01%": {
+          "--background-position-x": "-10px"
+        },
+        "100%": {
+          "--background-position-x": "0"
+        },
+      },
+    });
+
+    //mouseover時、両方のアニメーション実行
+    button.addEventListener("mouseover", () => {
+      circleAnimation.play();
+      caretAnimation.restart();
+    });
+
+    //mouseleave時は矢印アニメーションは実行しない
     button.addEventListener("mouseleave", () => {
-      hoverAnimation.reverse();
+      circleAnimation.reverse();
     });
   });
 }
@@ -719,7 +747,7 @@ window.addEventListener("resize", () => {
  * 初期実行処理
  */
 function init() {
-  setCircleButtonHoverAnimation();
+  setLinkButtonHoverAnimation();
   changeFvImage();
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);

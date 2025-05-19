@@ -1391,6 +1391,7 @@ img {
   font-weight: 700;
   font-size: clamp(13px, 1.3rem, 20px);
   line-height: 1.5;
+  z-index: -1;
 }
 @media screen and (min-width: 768px) {
   .contents__slide-title {
@@ -1414,6 +1415,8 @@ img {
   background-color: rgba(255, 255, 255, 0.29);
   -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  z-index: -1;
+  --background-position-x: 0;
 }
 .contents__button-wrapper::before {
   content: "";
@@ -1440,7 +1443,7 @@ img {
   height: 0.8rem;
   background-image: url(../images/caret-right.svg);
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: var(--background-position-x) 50%;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -1472,7 +1475,7 @@ img {
 .contents__button-svg .circle {
   fill: none;
   stroke: #dc3c36;
-  stroke-width: 20;
+  stroke-width: 2;
   -webkit-transform-origin: center;
           transform-origin: center;
   -webkit-transform: rotate(-90deg);
