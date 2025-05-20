@@ -379,6 +379,11 @@ let historyCurrentNumber = -1;
 let historyItems = [];
 
 /**
+ * Contetnsセクションのアニメーション
+ */
+let contentsSlideAnimation;
+
+/**
  * SVGのアニメーション設定
  *
  * @param {Number} windowWidth ウィンドウ幅
@@ -714,6 +719,67 @@ function setLinkButtonHoverAnimation() {
 }
 
 /**
+ * Contentsセクションのスライド設定
+ */
+function setContentsSlideAnimation() {
+  const slideWrapper = document.querySelector(".contents__slide-wrapper");
+  const slide_1 = document.querySelector(".contents__slide-list.slide-1");
+  const slide_2 = document.querySelector(".contents__slide-list.slide-2");
+  const slide_3 = document.querySelector(".contents__slide-list.slide-3");
+
+  if (contentsSlideAnimation) {
+    contentsSlideAnimation.scrollTrigger.kill();
+    contentsSlideAnimation.kill();
+  }
+
+  contentsSlideAnimation = gsap.timeline({
+    scrollTrigger: {
+      trigger: slideWrapper,
+      start: "top top",
+      end: "+=2000",
+      scrub: 1,
+      pin: true,
+      aniticipatePin: 1,
+      invalidateOnRefresh: true,
+    },
+    defaults: {
+
+    }
+  }).fromTo(slide_1, {
+    zIndex: 3,
+    opacity: 1,
+    xPercent: -50,
+    rotationY: 0,
+    scale: 1,
+  }, {
+    keyframes: {
+      "50%": {
+        zIndex: 1,
+        opacity: 0.6,
+        xPercent: -100,
+        rotationY: -25,
+        scale: 0.6,
+      },
+      "100%": {
+        xPercent: -75,
+        scale: 0.2,
+      }
+    },
+  }).fromTo(slide_2, {
+    zIndex: 2,
+    opacity: 0.5,
+
+  }, {
+
+  }, "<").fromTo(slide_3, {
+    zIndex: 1,
+    opacity: 0,
+  }, {
+
+  }, "<");
+}
+
+/**
  * トップへ戻るボタンクリックイベント
  */
 topBackButton.addEventListener("click", () => {
@@ -735,6 +801,7 @@ window.addEventListener("resize", () => {
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
   setHistoryAnimation();
+  setContentsSlideAnimation();
 
   mm.add("(min-width: 1024px)", () => {
     gsap.to(".history__progress-year-wrapper", {
@@ -753,6 +820,7 @@ function init() {
   setSvgAnimation(currentWindowWidth);
   setHistoryItem();
   setHistoryAnimation();
+  setContentsSlideAnimation();
 }
 
 init();

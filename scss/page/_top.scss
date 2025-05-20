@@ -781,6 +781,7 @@
     height: 100vh;
     position: relative;
     counter-reset: list-number;
+    perspective: 2000px;
 
     &::before {
       content: "";
@@ -818,7 +819,7 @@
     box-shadow: $shadow-red;
     overflow: hidden;
     counter-increment: list-number;
-    background-color: gray;
+    opacity: 0;
 
     &::before {
       content: "Vol." counter(list-number);
@@ -858,6 +859,14 @@
     width: 100%;
     height: 100%;
     position: relative;
+  }
+
+  &__slide-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
 
   &__slide-title {
