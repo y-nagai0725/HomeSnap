@@ -1300,6 +1300,7 @@ img {
   height: 100vh;
   position: relative;
   counter-reset: list-number;
+  overflow: hidden;
   -webkit-perspective: 2000px;
           perspective: 2000px;
 }

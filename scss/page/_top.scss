@@ -781,6 +781,7 @@
     height: 100vh;
     position: relative;
     counter-reset: list-number;
+    overflow: hidden;
     perspective: 2000px;
 
     &::before {

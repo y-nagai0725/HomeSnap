@@ -743,7 +743,7 @@ function setContentsSlideAnimation() {
       invalidateOnRefresh: true,
     },
     defaults: {
-
+      ease: gsapEasing,
     }
   }).fromTo(slide_1, {
     zIndex: 3,
@@ -754,28 +754,66 @@ function setContentsSlideAnimation() {
   }, {
     keyframes: {
       "50%": {
-        zIndex: 1,
+        zIndex: 2,
         opacity: 0.6,
-        xPercent: -100,
-        rotationY: -25,
-        scale: 0.6,
+        xPercent: -125,
+        rotationY: -30,
+        scale: 0.45,
       },
       "100%": {
+        zIndex: 1,
+        opacity: 0.6,
         xPercent: -75,
+        rotationY: -60,
         scale: 0.2,
       }
     },
   }).fromTo(slide_2, {
     zIndex: 2,
-    opacity: 0.5,
-
+    opacity: 0.6,
+    xPercent: 25,
+    rotationY: 30,
+    scale: 0.45,
   }, {
-
+    keyframes: {
+      "50%": {
+        zIndex: 3,
+        opacity: 1,
+        xPercent: -50,
+        rotationY: 0,
+        scale: 1,
+      },
+      "100%": {
+        zIndex: 1,
+        opacity: 0.6,
+        xPercent: -125,
+        rotationY: -30,
+        scale: 0.45,
+      }
+    },
   }, "<").fromTo(slide_3, {
     zIndex: 1,
-    opacity: 0,
+    opacity: 0.6,
+    xPercent: 0,
+    rotationY: 60,
+    scale: 0.2,
   }, {
-
+    keyframes: {
+      "50%": {
+        zIndex: 2,
+        opacity: 0.6,
+        xPercent: 25,
+        rotationY: 30,
+        scale: 0.45,
+      },
+      "100%": {
+        zIndex: 3,
+        opacity: 1,
+        xPercent: -50,
+        rotationY: 0,
+        scale: 1,
+      }
+    },
   }, "<");
 }
 
