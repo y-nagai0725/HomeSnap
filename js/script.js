@@ -683,7 +683,8 @@ function setLinkButtonHoverAnimation() {
       strokeDasharray: `${circumference}, ${circumference}`,
     });
 
-    //右矢印のアニメーション
+    //矢印のアニメーション
+    const isDirectionRight = circleWrapper.classList.contains("caret-right");
     const caretAnimation = gsap.timeline({
       paused: true,
     }).to(circleWrapper, {
@@ -694,10 +695,10 @@ function setLinkButtonHoverAnimation() {
           "--background-position-x": "0"
         },
         "50%": {
-          "--background-position-x": "10px"
+          "--background-position-x": isDirectionRight ? "10px" : "-10px"
         },
         "50.01%": {
-          "--background-position-x": "-10px"
+          "--background-position-x": isDirectionRight ? "-10px" : "10px"
         },
         "100%": {
           "--background-position-x": "0"
@@ -705,10 +706,11 @@ function setLinkButtonHoverAnimation() {
       },
     });
 
+
     //mouseover時、両方のアニメーション実行
     button.addEventListener("mouseover", () => {
       circleAnimation.play();
-      caretAnimation.restart();
+      caretAnimation.play(false);
     });
 
     //mouseleave時は矢印アニメーションは実行しない
@@ -818,6 +820,35 @@ function setContentsSlideAnimation() {
 }
 
 /**
+ * Eventsセクションのスライダー初期化
+ */
+function initEventsSlider() {
+  const mySwiper = new Swiper(".events__slider.swiper", {
+    effect: "slide",
+    slidesPerView: 1,
+    spaceBetween: 0, // スライド間の余白（px）
+    centeredSlides: true, // アクティブなスライドを中央に配置する
+    loop: true,  // 無限ループさせる
+    loopAdditionalSlides: 1, // 無限ループさせる場合に複製するスライド数
+    speed: 400, // スライドアニメーションのスピード（ミリ秒）
+
+    navigation: {
+      nextEl: ".swiper-button-next", // 「次へ」ボタン要素のクラス
+      prevEl: ".swiper-button-prev", // 「前へ」ボタン要素のクラス
+    },
+
+    breakpoints: {
+      768: {
+
+      },
+      1024: {
+
+      },
+    },
+  });
+}
+
+/**
  * トップへ戻るボタンクリックイベント
  */
 topBackButton.addEventListener("click", () => {
@@ -859,6 +890,7 @@ function init() {
   setHistoryItem();
   setHistoryAnimation();
   setContentsSlideAnimation();
+  initEventsSlider();
 }
 
 init();
