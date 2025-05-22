@@ -1440,6 +1440,10 @@ img {
   position: relative;
 }
 @media (any-hover: hover) {
+  .contents__slide-link:hover .contents__slide-image {
+    -webkit-transform: scale(1.08);
+            transform: scale(1.08);
+  }
   .contents__slide-link:hover .contents__button-wrapper::after {
     -webkit-animation: move-caret-right 0.3s ease-out forwards;
             animation: move-caret-right 0.3s ease-out forwards;
@@ -1455,6 +1459,10 @@ img {
   -o-object-fit: cover;
      object-fit: cover;
   z-index: -1;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
 }
 .contents__slide-title {
   width: calc(100% - 4.8rem);
