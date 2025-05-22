@@ -318,11 +318,6 @@ const beforePcBgSvgPath_2 = "M434.598 756.65C408.033 1101.73 804.12 1035.14 760.
 const beforePcBgSvgPath_3 = "M768.273 -432C966.881 -341.87 1038.71 31.2002 574.164 197.68C109.631 364.16 286.729 779.58 -104.283 774.43C-495.174 769.27 -492.924 108.1 -220.25 -162.85C52.4243 -433.81 569.674 -522.13 768.273 -432Z";
 const beforePcBgSvgPath_4 = "M1174.48 1005.04C1639.02 838.57 1461.92 423.14 1852.95 428.29C2243.84 433.45 2241.59 1094.48 1968.9 1365.58C1696.23 1636.54 1178.98 1724.87 980.37 1634.73C781.772 1544.6 709.946 1171.52 1174.48 1005.04Z";
 
-const beforeTabBgSvgPath_1 = "M599.16 -162.59C802.35 -62.6299 1257.24 448.59 1061.36 548.22C865.48 647.85 626.48 659.43 517.3 421.27C408.11 183.11 182.21 279.31 121.72 102.04C61.2198 -75.22 395.97 -262.61 599.16 -162.59Z";
-const beforeTabBgSvgPath_2 = "M314.56 692.39C423.8 930.66 649.76 834.41 710.31 1011.79C770.86 1189.18 435.95 1376.57 232.64 1276.55C29.3999 1176.53 -425.71 665.07 -229.72 565.39C-33.73 465.7 205.32 454.12 314.56 692.39Z";
-const beforeTabBgSvgPath_3 = "M-158.6 -87.7598C38.2299 -241.98 377.7 -258.45 498.18 -184.35C618.67 -110.25 635.14 137.29 323.33 208.64C11.5199 279.98 92.2599 563.23 -158.6 529.05C-409.46 494.92 -355.38 66.4502 -158.6 -87.7598Z";
-const beforeTabBgSvgPath_4 = "M460.51 839.98C772.32 768.63 691.59 485.38 942.45 519.57C1193.32 553.75 1139.29 982.22 942.45 1136.44C745.62 1290.66 406.15 1307.13 285.66 1232.97C165.18 1158.81 148.7 911.32 460.51 839.98Z";
-
 const beforeSpBgSvgPath_1 = "M292.56 -79.3898C391.77 -30.5798 613.89 219.04 518.24 267.68C422.6 316.33 305.9 321.99 252.58 205.7C199.27 89.4102 88.97 136.38 59.43 49.8202C29.89 -36.7298 193.34 -128.22 292.56 -79.3898Z";
 const beforeSpBgSvgPath_2 = "M153.59 505.08C206.93 621.42 317.26 574.42 346.83 661.04C376.4 747.65 212.86 839.15 113.59 790.31C14.35 741.47 -207.86 491.74 -112.17 443.07C-16.47 394.39 100.25 388.74 153.59 505.08Z";
 const beforeSpBgSvgPath_3 = "M-77.44 -42.8499C18.66 -118.15 184.42 -126.19 243.25 -90.0099C302.08 -53.8299 310.12 67.0301 157.87 101.87C5.61996 136.71 45.04 275.01 -77.44 258.32C-199.93 241.66 -173.52 32.4401 -77.44 -42.8499Z";
@@ -333,19 +328,14 @@ const afterPcBgSvgPath_2 = "M1405 540C1405 785.767 1205.77 985 960 985C714.233 9
 const afterPcBgSvgPath_3 = "M731 172C731 249.32 668.32 312 591 312C513.68 312 452 249.32 451 172C451 94.6801 513.68 32 591 32C668.32 32 731 94.6801 731 172Z";
 const afterPcBgSvgPath_4 = "M731 172C731 249.32 668.32 312 591 312C513.68 312 452 249.32 451 172C451 94.6801 513.68 32 591 32C668.32 32 731 94.6801 731 172Z";
 
-const afterTabBgSvgPath_1 = "M802 511.5C802 742.079 615.079 929 384.5 929C153.921 929 -32 742.079 -33 511.5C-33 280.921 153.921 94 384.5 94C615.079 94 802 280.921 802 511.5Z";
-const afterTabBgSvgPath_2 = "M802 511.5C802 742.079 615.079 929 384.5 929C153.921 929 -32 742.079 -33 511.5C-33 280.921 153.921 94 384.5 94C615.079 94 802 280.921 802 511.5Z";
-const afterTabBgSvgPath_3 = "M375 110C374 170.751 325.751 220 265 220C204.249 220 155 170.751 155 110C155 49.2487 204.249 0 265 0C325.751 0 375 49.2487 375 110Z";
-const afterTabBgSvgPath_4 = "M375 110C374 170.751 325.751 220 265 220C204.249 220 155 170.751 155 110C155 49.2487 204.249 0 265 0C325.751 0 375 49.2487 375 110Z";
-
 const afterSpBgSvgPath_1 = "M447 333C446 476.594 330.594 593 187 593C43.406 593 -73 476.594 -73 333C-73 189.406 43.406 73 187 73C330.594 73 447 189.406 447 333Z";
 const afterSpBgSvgPath_2 = "M447 333C446 476.594 330.594 593 187 593C43.406 593 -73 476.594 -73 333C-73 189.406 43.406 73 187 73C330.594 73 447 189.406 447 333Z";
 const afterSpBgSvgPath_3 = "M184 73C183 104.48 158.48 130 127 130C95.5198 130 70 104.48 70 73C70 41.5198 95.5198 16 127 16C158.48 16 184 41.5198 184 73Z";
 const afterSpBgSvgPath_4 = "M184 73C183 104.48 158.48 130 127 130C95.5198 130 70 104.48 70 73C70 41.5198 95.5198 16 127 16C158.48 16 184 41.5198 184 73Z";
 
 const bgSvgPathList = {
-  "before": { "pc": [beforePcBgSvgPath_1, beforePcBgSvgPath_2, beforePcBgSvgPath_3, beforePcBgSvgPath_4], "tab": [beforeTabBgSvgPath_1, beforeTabBgSvgPath_2, beforeTabBgSvgPath_3, beforeTabBgSvgPath_4], "sp": [beforeSpBgSvgPath_1, beforeSpBgSvgPath_2, beforeSpBgSvgPath_3, beforeSpBgSvgPath_4] },
-  "after": { "pc": [afterPcBgSvgPath_1, afterPcBgSvgPath_2, afterPcBgSvgPath_3, afterPcBgSvgPath_4], "tab": [afterTabBgSvgPath_1, afterTabBgSvgPath_2, afterTabBgSvgPath_3, afterTabBgSvgPath_4], "sp": [afterSpBgSvgPath_1, afterSpBgSvgPath_2, afterSpBgSvgPath_3, afterSpBgSvgPath_4] },
+  "before": { "pc": [beforePcBgSvgPath_1, beforePcBgSvgPath_2, beforePcBgSvgPath_3, beforePcBgSvgPath_4], "sp": [beforeSpBgSvgPath_1, beforeSpBgSvgPath_2, beforeSpBgSvgPath_3, beforeSpBgSvgPath_4] },
+  "after": { "pc": [afterPcBgSvgPath_1, afterPcBgSvgPath_2, afterPcBgSvgPath_3, afterPcBgSvgPath_4], "sp": [afterSpBgSvgPath_1, afterSpBgSvgPath_2, afterSpBgSvgPath_3, afterSpBgSvgPath_4] },
 }
 
 /**
@@ -395,8 +385,6 @@ function setSvgAnimation(windowWidth) {
 
   if (windowWidth >= pcBreakPoint) {
     prefix = "pc";
-  } else if (windowWidth >= tabBreakPoint) {
-    prefix = "tab";
   } else {
     prefix = "sp";
   }
@@ -503,7 +491,7 @@ function setSvgAnimation(windowWidth) {
   }, {
     ease: easing,
     opacity: 1,
-    onUpdate: () => {
+    onUpdate: () => {//（onUpdateの理由）timeline途中で画面幅resizeイベント起きた場合にも対応するため
       setSmallCircleWrapperPosition();
     },
   }, "<");
@@ -517,8 +505,6 @@ function setSvgAnimation(windowWidth) {
 function setSvgViewBoxSize(windowWidth) {
   if (windowWidth >= pcBreakPoint) {
     fvBgSvg.setAttribute("viewBox", "0 0 1920 1080");
-  } else if (windowWidth >= tabBreakPoint) {
-    fvBgSvg.setAttribute("viewBox", "0 0 768 1024");
   } else {
     fvBgSvg.setAttribute("viewBox", "0 0 375 667");
   }
