@@ -777,6 +777,43 @@ function initEventsSlider() {
 }
 
 /**
+ * Postsセクションのスライダー初期化
+ */
+function initPostsSlider() {
+  //スライダー生成
+  const createSwiper = (targetClassName, isReverseDirection = false) => {
+    return new Swiper(targetClassName, {
+      slidesPerView: 4.8,
+      spaceBetween: 4,
+      loop: true,
+      loopAdditionalSlides: 1,
+      speed: 2500,
+      allowTouchMove: false,
+      autoplay: {
+        delay: 0,
+        reverseDirection: isReverseDirection,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 5.2,
+          spaceBetween: 8,
+        },
+        1024: {
+          slidesPerView: 7.65,
+          spaceBetween: 10,
+        }
+      },
+    });
+  };
+
+  //右方向スライダー設定
+  const postsSectionRightSwiper = createSwiper(".posts__slider-right.swiper");
+
+  //左方向スライダー設定
+  const postsSectionLeftSwiper = createSwiper(".posts__slider-left.swiper", true);
+}
+
+/**
  * トップへ戻るボタンクリックイベント
  */
 topBackButton.addEventListener("click", () => {
@@ -818,6 +855,7 @@ function init() {
   setHistoryAnimation();
   setContentsSlideAnimation();
   initEventsSlider();
+  initPostsSlider();
 }
 
 init();
