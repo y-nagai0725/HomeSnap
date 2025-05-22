@@ -35,3 +35,33 @@
     top: 90%;
   }
 }
+
+@keyframes move-caret-right {
+  0% {
+    background-position-x: 0;
+  }
+  50% {
+    background-position-x: 10px;
+  }
+  50.01% {
+    background-position-x: -10px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}
+
+@keyframes move-caret-left {
+  0% {
+    background-position-x: 0;
+  }
+  50% {
+    background-position-x: -10px;
+  }
+  50.01% {
+    background-position-x: 10px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}

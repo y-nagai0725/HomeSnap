@@ -661,67 +661,7 @@ function setHistoryItem() {
 }
 
 /**
- * リンクボタンのホバーアニメーション設定
- */
-function setLinkButtonHoverAnimation() {
-  const circleButtons = document.querySelectorAll(".circle-button");
-
-  circleButtons.forEach(button => {
-    const circleWrapper = button.querySelector(".circle-button-wrapper");
-    const circle = button.querySelector(".circle");
-    const r = circle.getAttribute("r");
-    const circumference = 2 * Math.PI * r;
-
-    //svgのcircle要素のアニメーション
-    const circleAnimation = gsap.timeline({
-      paused: true,
-    }).fromTo(circle, {
-      strokeDasharray: `0, ${circumference}`,
-    }, {
-      duration: 0.4,
-      ease: gsapEasing,
-      strokeDasharray: `${circumference}, ${circumference}`,
-    });
-
-    //矢印のアニメーション
-    const isDirectionRight = circleWrapper.classList.contains("caret-right");
-    const caretAnimation = gsap.timeline({
-      paused: true,
-    }).to(circleWrapper, {
-      duration: 0.3,
-      ease: gsapEasing,
-      keyframes: {
-        "0%": {
-          "--background-position-x": "0"
-        },
-        "50%": {
-          "--background-position-x": isDirectionRight ? "10px" : "-10px"
-        },
-        "50.01%": {
-          "--background-position-x": isDirectionRight ? "-10px" : "10px"
-        },
-        "100%": {
-          "--background-position-x": "0"
-        },
-      },
-    });
-
-
-    //mouseover時、両方のアニメーション実行
-    button.addEventListener("mouseover", () => {
-      circleAnimation.play();
-      caretAnimation.play(false);
-    });
-
-    //mouseleave時は矢印アニメーションは実行しない
-    button.addEventListener("mouseleave", () => {
-      circleAnimation.reverse();
-    });
-  });
-}
-
-/**
- * Contentsセクションのスライド設定
+ * Contentsセクションのスライドアニメーション設定
  */
 function setContentsSlideAnimation() {
   const slideWrapper = document.querySelector(".contents__slide-wrapper");
@@ -823,27 +763,15 @@ function setContentsSlideAnimation() {
  * Eventsセクションのスライダー初期化
  */
 function initEventsSlider() {
-  const mySwiper = new Swiper(".events__slider.swiper", {
+  const eventsSectionSwiper = new Swiper(".events__slider.swiper", {
     effect: "slide",
     slidesPerView: 1,
-    spaceBetween: 0, // スライド間の余白（px）
-    centeredSlides: true, // アクティブなスライドを中央に配置する
-    loop: true,  // 無限ループさせる
-    loopAdditionalSlides: 1, // 無限ループさせる場合に複製するスライド数
-    speed: 400, // スライドアニメーションのスピード（ミリ秒）
-
+    spaceBetween: 0,
+    centeredSlides: true,
+    speed: 500,
     navigation: {
-      nextEl: ".swiper-button-next", // 「次へ」ボタン要素のクラス
-      prevEl: ".swiper-button-prev", // 「前へ」ボタン要素のクラス
-    },
-
-    breakpoints: {
-      768: {
-
-      },
-      1024: {
-
-      },
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
   });
 }
@@ -883,7 +811,6 @@ window.addEventListener("resize", () => {
  * 初期実行処理
  */
 function init() {
-  setLinkButtonHoverAnimation();
   changeFvImage();
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
