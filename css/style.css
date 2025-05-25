@@ -2069,4 +2069,28 @@ img {
   .posts__link {
     font-size: clamp(2.6rem, 2.6rem, 26px);
   }
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.4s ease-out;
+  transition: opacity 0.4s ease-out;
+}
+.fade.js-actived {
+  opacity: 1;
+}
+
+.fade-up {
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
+  -webkit-transition: opacity 0.4s ease-out, -webkit-transform 0.4s ease-out;
+  transition: opacity 0.4s ease-out, -webkit-transform 0.4s ease-out;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+}
+.fade-up.js-actived {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }/*# sourceMappingURL=style.css.map */

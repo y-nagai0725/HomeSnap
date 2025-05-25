@@ -852,6 +852,34 @@ function initPostsSlider() {
 }
 
 /**
+ * 要素を監視
+ */
+function observeElements() {
+  const targets = document.querySelectorAll(".fade, .fade-up");
+
+  const options = {
+    root: null,
+    rootMargin: "-50% 0px",
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        console.log(entry.target.className + "が交差したよ");
+
+        entry.target.classList.add("js-actived");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  targets.forEach(target => {
+    observer.observe(target);
+  });
+}
+
+/**
  * トップへ戻るボタンクリックイベント
  */
 document.querySelector(".footer__back-button").addEventListener("click", () => {
@@ -894,6 +922,7 @@ function init() {
   setContentsSlideAnimation();
   initEventsSlider();
   initPostsSlider();
+  observeElements();
 }
 
 init();
