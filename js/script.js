@@ -363,11 +363,6 @@ const pcBreakPoint = 1024;
 const tabBreakPoint = 768;
 
 /**
- * トップへ戻るボタン
- */
-const topBackButton = document.querySelector(".footer__back-button");
-
-/**
  * 現在のウィンドウ幅
  */
 let currentWindowWidth = window.screen.width;
@@ -567,7 +562,8 @@ function setSvgViewBoxSize(windowWidth) {
 /**
  * SmallCircleWrapperの位置設定
  *
- * @param {HTMLElement} fvSmallCircleWrapper
+ * @param {HTMLElement} fvSmallCircleWrapper fvSmallCircleWrapper要素
+ * @param {HTMLElement} targetSvgPath 設定したい位置の要素
  */
 function setSmallCircleWrapperPosition(fvSmallCircleWrapper, targetSvgPath) {
   const pathData = targetSvgPath.getBoundingClientRect();
@@ -858,7 +854,7 @@ function initPostsSlider() {
 /**
  * トップへ戻るボタンクリックイベント
  */
-topBackButton.addEventListener("click", () => {
+document.querySelector(".footer__back-button").addEventListener("click", () => {
   gsap.to(window, {
     duration: 1,
     ease: gsapEasing,
