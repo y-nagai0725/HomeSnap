@@ -545,9 +545,6 @@ img {
   left: 3rem;
   bottom: 8rem;
 }
-.fv__anniversary-logo path {
-  fill: #dc3c36;
-}
 @media screen and (min-width: 768px) {
   .fv__anniversary-logo {
     width: 24rem;
@@ -751,7 +748,7 @@ img {
   -webkit-transition: opacity 0.4s ease-out;
   transition: opacity 0.4s ease-out;
 }
-.fv__image.js-showed {
+.fv__image.js-actived {
   opacity: 1;
 }
 
@@ -1528,7 +1525,7 @@ img {
           transform: translate(-50%, -50%);
   width: 0.6rem;
   height: 0.8rem;
-  background-image: url(../images/caret-right.svg);
+  background-image: url(../images/common/caret-right.svg);
   background-size: cover;
   background-position: 0 50%;
   background-repeat: no-repeat;
@@ -1660,11 +1657,11 @@ img {
           transform: translateX(-50%);
   width: 100%;
   height: 100%;
-  background: url(../images/events_bg-sp.svg) center center/cover;
+  background: url(../images/events/events_bg-sp.svg) center center/cover;
 }
 @media screen and (min-width: 1024px) {
   .events__slider-outer::before {
-    background: url(../images/events_bg-pc.svg) center center/cover;
+    background: url(../images/events/events_bg-pc.svg) center center/cover;
   }
 }
 .events__slider {
@@ -1889,10 +1886,10 @@ img {
   }
 }
 .events__slider-button-prev-wrapper::after {
-  background-image: url(../images/caret-left.svg);
+  background-image: url(../images/common/caret-left.svg);
 }
 .events__slider-button-next-wrapper::after {
-  background-image: url(../images/caret-right.svg);
+  background-image: url(../images/common/caret-right.svg);
 }
 .events__button-svg {
   width: 100%;
@@ -2039,7 +2036,7 @@ img {
           transform: translateY(-50%);
   width: 0.7rem;
   height: 0.9rem;
-  background-image: url(../images/caret-right.svg);
+  background-image: url(../images/common/caret-right.svg);
   background-position: 0 50%;
   background-size: cover;
   background-repeat: no-repeat;

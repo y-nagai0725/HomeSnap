@@ -589,12 +589,12 @@ function changeFvImage() {
   let currentIndex = 0;
 
   //初期表示
-  fvImages[currentIndex].classList.add("js-showed");
+  fvImages[currentIndex].classList.add("js-actived");
 
   //2秒毎に処理
   setInterval(() => {
     //現在表示している画像を非表示
-    fvImages[currentIndex].classList.remove("js-showed");
+    fvImages[currentIndex].classList.remove("js-actived");
 
     //index更新
     currentIndex++;
@@ -603,7 +603,7 @@ function changeFvImage() {
     }
 
     //次の画像表示
-    fvImages[currentIndex].classList.add("js-showed");
+    fvImages[currentIndex].classList.add("js-actived");
 
     //数字表示
     fvYearPrefix.innerHTML = (currentIndex + 1);
