@@ -663,8 +663,8 @@ img {
 }
 @media screen and (min-width: 768px) {
   .fv__circle-text-gray {
-    width: 102.2rem;
-    height: 102.2rem;
+    width: 99rem;
+    height: 99rem;
   }
 }
 @media screen and (min-width: 1024px) {
