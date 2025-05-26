@@ -644,12 +644,12 @@ function setHistoryAnimation() {
       aniticipatePin: 1,
       invalidateOnRefresh: true,
       onEnter: () => {
-        historyProgressWrapper.classList.add("js-showed");
-        historyItemList.classList.add("js-showed");
+        historyProgressWrapper.classList.add("js-actived");
+        historyItemList.classList.add("js-actived");
       },
       onLeaveBack: () => {
-        historyProgressWrapper.classList.remove("js-showed");
-        historyItemList.classList.remove("js-showed");
+        historyProgressWrapper.classList.remove("js-actived");
+        historyItemList.classList.remove("js-actived");
       },
       onUpdate: (self) => {
         let targetNumber = Math.floor(self.progress * historyItems.length);
@@ -693,7 +693,7 @@ function setHistoryItem() {
     historyItems.push(new HistoryItem(item, index));
   });
 
-  //
+  //アイテム数に応じてプログレスバーのpadding調整
   const progressYearWrapper = document.querySelector(".history__progress-year-wrapper");
   progressYearWrapper.style.setProperty("--padding-adjustment", (100 / historyItems.length / 2) + "%");
 }
