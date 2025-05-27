@@ -833,6 +833,7 @@
       font-weight: 700;
       font-size: clamp(12px, 1.2rem, 16px);
       background-color: $white;
+      z-index: 2;
     }
 
     @include tab {
@@ -859,6 +860,18 @@
     width: 100%;
     height: 100%;
     position: relative;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: $image-mask;
+      z-index: 2;
+    }
 
     @include hover {
       #{$parent}__slide-image {
@@ -880,7 +893,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+    z-index: 1;
     transition: transform 0.3s ease-out;
   }
 
@@ -894,7 +907,7 @@
     font-weight: 700;
     font-size: clamp(13px, 1.3rem, 20px);
     line-height: 1.5;
-    z-index: -1;
+    z-index: 3;
 
     @include tab {
       width: calc(100% - 8rem);
@@ -916,7 +929,7 @@
     border-radius: 100vmax;
     background-color: $light-white;
     box-shadow: $shadow-black;
-    z-index: -1;
+    z-index: 3;
 
     &::before {
       content: "";
