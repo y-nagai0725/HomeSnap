@@ -2035,10 +2035,6 @@ img {
   font-weight: 700;
   font-size: clamp(15px, 1.5rem, 22px);
   position: relative;
-  -webkit-transition: -webkit-box-shadow 0.3s ease-out;
-  transition: -webkit-box-shadow 0.3s ease-out;
-  transition: box-shadow 0.3s ease-out;
-  transition: box-shadow 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
 }
 .posts__link::after {
   content: "";
@@ -2094,10 +2090,10 @@ img {
   opacity: 0;
   -webkit-transform: translateY(40px);
           transform: translateY(40px);
-  -webkit-transition: opacity 0.4s ease-out, -webkit-transform 0.4s ease-out;
-  transition: opacity 0.4s ease-out, -webkit-transform 0.4s ease-out;
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+  -webkit-transition: opacity 0.4s ease-out, -webkit-transform 0.4s ease-out, -webkit-box-shadow 0.3s ease-out;
+  transition: opacity 0.4s ease-out, -webkit-transform 0.4s ease-out, -webkit-box-shadow 0.3s ease-out;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, box-shadow 0.3s ease-out;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, box-shadow 0.3s ease-out, -webkit-transform 0.4s ease-out, -webkit-box-shadow 0.3s ease-out;
 }
 .fade-up.js-actived {
   opacity: 1;
