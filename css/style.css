@@ -1085,6 +1085,7 @@ img {
   color: #fff;
   font-weight: 700;
   font-size: clamp(11px, 1.1rem, 18px);
+  white-space: nowrap;
 }
 @media screen and (min-width: 768px) {
   .history__progress-title {
