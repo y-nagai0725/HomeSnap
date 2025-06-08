@@ -1,4 +1,5 @@
 # HomeSnap<!-- omit in toc -->
+![Image](https://github.com/user-attachments/assets/d4e7fd6c-5bd4-435f-a88e-b153cde5a1e6)
 
 ## 目次<!-- omit in toc -->
 - [概要](#概要)
@@ -7,21 +8,28 @@
 - [使用技術](#使用技術)
 - [使用フォント](#使用フォント)
 - [デザインカンプ](#デザインカンプ)
+- [FV](#fv)
+- [Historyセクション](#historyセクション)
+- [Contentsセクション](#contentsセクション)
+- [Eventsセクション](#eventsセクション)
+- [Postsセクション](#postsセクション)
+- [OPアニメーション](#opアニメーション)
 
 ## 概要
-* aaaaaaaaa
+* 写真投稿、共有をする架空のサービスの10周年記念webサイトです。
 
 ## 公開URL
 [https://homesnap.mikanbako.jp/](https://homesnap.mikanbako.jp/)
 
 ## 目的
-* aaaaaaaa
+* GSAPを使用したスクロール連動アニメーションの練習
 
 ## 使用技術
 * HTML
 * CSS
 * JavaScript
 * GSAP
+* swiper.js
 
 ## 使用フォント
 * 和文フォント
@@ -31,3 +39,20 @@
 
 ## デザインカンプ
 [Figmaページ（閲覧のみ可能です）](https://www.figma.com/design/O07zILaVA9NIQKxaahI3ZX/HomeSnap?node-id=0-1&t=7doAIWqjAzAALk0M-1)
+
+## FV
+![Image](https://github.com/user-attachments/assets/63c9d5ea-d728-40c7-9bbb-c371dd0dd0b5)
+
+## Historyセクション
+![Image](https://github.com/user-attachments/assets/333fecf5-be3a-44a9-9f9a-a03225618f3c)
+
+## Contentsセクション
+![Image](https://github.com/user-attachments/assets/6805f40e-74c0-4c88-9195-10071c4d591e)
+
+## Eventsセクション
+![Image](https://github.com/user-attachments/assets/2d205a8a-c124-4257-ad05-93f4039f6303)
+
+## Postsセクション
+![Image](https://github.com/user-attachments/assets/5792eab7-927c-4481-8b14-c4cc84a8f3b4)
+
+## OPアニメーション
