@@ -13,7 +13,6 @@
 - [Contentsセクション](#contentsセクション)
 - [Eventsセクション](#eventsセクション)
 - [Postsセクション](#postsセクション)
-- [OPアニメーション](#opアニメーション)
 
 ## 概要
 * 写真投稿、共有をする架空のサービスの10周年記念webサイトです。
@@ -43,16 +42,24 @@
 ## FV
 ![Image](https://github.com/user-attachments/assets/63c9d5ea-d728-40c7-9bbb-c371dd0dd0b5)
 
+**GSAP**でスクロール連動のアニメーションを作成しました。
+
 ## Historyセクション
 ![Image](https://github.com/user-attachments/assets/333fecf5-be3a-44a9-9f9a-a03225618f3c)
+
+**GSAP**でスクロール連動のアニメーションを作成しました。
 
 ## Contentsセクション
 ![Image](https://github.com/user-attachments/assets/6805f40e-74c0-4c88-9195-10071c4d591e)
 
+**GSAP**でスクロール連動のアニメーションを作成しました。
+
 ## Eventsセクション
 ![Image](https://github.com/user-attachments/assets/2d205a8a-c124-4257-ad05-93f4039f6303)
+
+**swiper.js**でシンプルなスライダーを作成しました。
 
 ## Postsセクション
 ![Image](https://github.com/user-attachments/assets/5792eab7-927c-4481-8b14-c4cc84a8f3b4)
 
-## OPアニメーション
+**swiper.js**で無限スライダーを作成しました。
