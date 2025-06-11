@@ -424,6 +424,14 @@ img {
   }
 }
 
+.opening {
+  position: fixed;
+  width: 100%;
+  height: 100svh;
+  background-color: #dc3c36;
+  z-index: 9999;
+}
+
 .fv {
   width: 100%;
   height: 100svh;
