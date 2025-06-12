@@ -431,6 +431,15 @@ img {
   background-color: #dc3c36;
   z-index: 9999;
 }
+.opening__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 27rem;
+  aspect-ratio: 270/211;
+}
 
 .fv {
   width: 100%;

@@ -6,6 +6,15 @@
   height: 100svh;
   background-color: $red;
   z-index: 9999;
+
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 27rem;
+    aspect-ratio: 270 / 211;
+  }
 }
 
 .fv {
