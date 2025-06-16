@@ -430,6 +430,8 @@ img {
   height: 100svh;
   background-color: #dc3c36;
   z-index: 9999;
+  -webkit-transition: opacity 0.4s ease-out;
+  transition: opacity 0.4s ease-out;
 }
 .opening__logo {
   position: absolute;
@@ -437,8 +439,20 @@ img {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 27rem;
+  width: 18rem;
   aspect-ratio: 270/211;
+  opacity: 0;
+}
+.opening__logo path {
+  fill: transparent;
+  stroke: #fff;
+  -webkit-transition: fill 0.4s ease-out;
+  transition: fill 0.4s ease-out;
+}
+@media screen and (min-width: 768px) {
+  .opening__logo {
+    width: 27rem;
+  }
 }
 
 .fv {

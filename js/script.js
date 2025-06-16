@@ -393,6 +393,79 @@ let historyItems = [];
 let contentsSlideAnimation;
 
 /**
+ * opアニメーションを開始
+ */
+function startOpeningAnimation() {
+  const opening = document.querySelector(".opening");
+  const logo = document.querySelector(".opening__logo");
+  const pathList = document.querySelectorAll(".opening__logo path");
+
+  //pathの初期化
+  pathList.forEach(path => {
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = `0, ${pathLength}`;
+  });
+
+  logo.style.opacity = 1;
+
+  const tl = gsap.timeline({
+    defaults: {
+      ease: "none",
+    },
+  });
+
+  document.querySelectorAll(".outer-curve > path").forEach(path => {
+    const pathLength = path.getTotalLength();
+    tl.to(path, {
+      duration: 0.1,
+      strokeDasharray: `${pathLength}, ${pathLength}`,
+    }, "<0.1");
+  });
+
+  document.querySelectorAll(".line-left > path, .line-right > path").forEach(path => {
+    const pathLength = path.getTotalLength();
+    tl.to(path, {
+      duration: 0.01,
+      strokeDasharray: `${pathLength}, ${pathLength}`,
+    }, "<0.01");
+  });
+
+  document.querySelectorAll(".ordinal-number > path").forEach(path => {
+    const pathLength = path.getTotalLength();
+    tl.to(path, {
+      duration: 0.1,
+      strokeDasharray: `${pathLength}, ${pathLength}`,
+    }, "<0.1");
+  });
+
+  document.querySelectorAll(".ribbon > path").forEach(path => {
+    const pathLength = path.getTotalLength();
+    tl.to(path, {
+      duration: 0.1,
+      strokeDasharray: `${pathLength}, ${pathLength}`,
+    }, "<0.1");
+  });
+
+  document.querySelectorAll(".anniversary > path").forEach(path => {
+    const pathLength = path.getTotalLength();
+    tl.to(path, {
+      duration: 0.1,
+      strokeDasharray: `${pathLength}, ${pathLength}`,
+    }, "<0.1");
+  });
+
+  //最後にfillする
+  tl.add(() => {
+    document.querySelectorAll(".opening__logo path").forEach(path => {
+      path.style.fill = "#fff";
+    });
+  }).add(()=>{
+    opening.style.opacity = 0;
+    opening.style.zIndex = 0;
+  }, "<1");
+}
+
+/**
  * SVGのアニメーション設定
  *
  * @param {Number} windowWidth ウィンドウ幅
@@ -921,6 +994,7 @@ function init() {
   initEventsSlider();
   initPostsSlider();
   observeElements();
+  startOpeningAnimation();
 }
 
 init();
