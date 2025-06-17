@@ -16,6 +16,7 @@
     width: 18rem;
     aspect-ratio: 270 / 211;
     opacity: 0;
+    z-index: 1;
 
     path {
       fill: transparent;
@@ -26,6 +27,13 @@
     @include tab {
       width: 27rem;
     }
+  }
+
+  &__shutter-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
   }
 }
 
