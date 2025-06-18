@@ -224,13 +224,24 @@ class HistoryItem {
   }
 
   /**
+   * gsapAnimation作成
+   *
+   * @param {*} targetPropertyName
+   * @param {*} targetElement
+   * @param {*} gsapOptions
+   */
+  _createAnimation(targetPropertyName, targetElement, gsapOptions) {
+    if (this[targetPropertyName]) {
+      this[targetPropertyName].kill();
+    }
+    this[targetPropertyName] = gsap.to(targetElement, gsapOptions);
+  }
+
+  /**
    * タイトル表示
    */
   showTitle() {
-    if (this.currentTitleAnimation) {
-      this.currentTitleAnimation.kill();
-    }
-    this.currentTitleAnimation = gsap.to(this.title, {
+    this._createAnimation("currentTitleAnimation", this.title, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 1,
@@ -241,10 +252,7 @@ class HistoryItem {
    * タイトル非表示
    */
   hideTitle() {
-    if (this.currentTitleAnimation) {
-      this.currentTitleAnimation.kill();
-    }
-    this.currentTitleAnimation = gsap.to(this.title, {
+    this._createAnimation("currentTitleAnimation", this.title, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 0,
@@ -255,10 +263,7 @@ class HistoryItem {
    * 画像表示
    */
   showImage() {
-    if (this.currentImageAnimation) {
-      this.currentImageAnimation.kill();
-    }
-    this.currentImageAnimation = gsap.to(this.image, {
+    this._createAnimation("currentImageAnimation", this.image, {
       duration: this.imageAnimationDuration,
       ease: this.imageAnimationEasing,
       autoAlpha: 1,
@@ -271,10 +276,7 @@ class HistoryItem {
    * 画像非表示
    */
   hideImage() {
-    if (this.currentImageAnimation) {
-      this.currentImageAnimation.kill();
-    }
-    this.currentImageAnimation = gsap.to(this.image, {
+    this._createAnimation("currentImageAnimation", this.image, {
       duration: this.imageAnimationDuration,
       ease: this.imageAnimationEasing,
       autoAlpha: 0,
@@ -287,10 +289,7 @@ class HistoryItem {
    * 序数表示
    */
   showNumber() {
-    if (this.currentNumberAnimation) {
-      this.currentNumberAnimation.kill();
-    }
-    this.currentNumberAnimation = gsap.to(this.number, {
+    this._createAnimation("currentNumberAnimation", this.number, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 1,
@@ -302,10 +301,7 @@ class HistoryItem {
    * 序数非表示
    */
   hideNumber() {
-    if (this.currentNumberAnimation) {
-      this.currentNumberAnimation.kill();
-    }
-    this.currentNumberAnimation = gsap.to(this.number, {
+    this._createAnimation("currentNumberAnimation", this.number, {
       duration: 0,
       autoAlpha: 0,
       y: this.yMove,
@@ -316,10 +312,7 @@ class HistoryItem {
    * 説明文表示
    */
   showDescription() {
-    if (this.currentDescriptionAnimation) {
-      this.currentDescriptionAnimation.kill();
-    }
-    this.currentDescriptionAnimation = gsap.to(this.description, {
+    this._createAnimation("currentDescriptionAnimation", this.description, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 1,
@@ -331,10 +324,7 @@ class HistoryItem {
    * 説明文非表示
    */
   hideDescription() {
-    if (this.currentDescriptionAnimation) {
-      this.currentDescriptionAnimation.kill();
-    }
-    this.currentDescriptionAnimation = gsap.to(this.description, {
+    this._createAnimation("currentDescriptionAnimation", this.description, {
       duration: 0,
       autoAlpha: 0,
       y: this.yMove,
@@ -363,9 +353,19 @@ const pcBreakPoint = 1024;
 const tabBreakPoint = 768;
 
 /**
+ * Historyセクションアイテム
+ */
+const historyItems = [];
+
+/**
  * 現在のウィンドウ幅
  */
 let currentWindowWidth = window.screen.width;
+
+/**
+ * Historyセクションの現在の表示Number
+ */
+let historyCurrentNumber = -1;
 
 /**
  * SVGのアニメーション
@@ -378,19 +378,14 @@ let svgAnimation;
 let historySectionAnimation;
 
 /**
- * Historyセクションの現在の表示Number
- */
-let historyCurrentNumber = -1;
-
-/**
- * Historyセクションアイテム
- */
-let historyItems = [];
-
-/**
  * Contetnsセクションのアニメーション
  */
 let contentsSlideAnimation;
+
+/**
+ * resizeイベント制御用
+ */
+let resizeTimer;
 
 /**
  * opアニメーションを開始
@@ -459,7 +454,7 @@ function startOpeningAnimation() {
     document.querySelectorAll(".opening__logo path").forEach(path => {
       path.style.fill = "#fff";
     });
-  }).add(()=>{
+  }).add(() => {
     opening.style.opacity = 0;
     opening.style.zIndex = 0;
   }, "<1");
@@ -967,18 +962,23 @@ document.querySelector(".footer__back-button").addEventListener("click", () => {
  * resizeイベント
  */
 window.addEventListener("resize", () => {
-  currentWindowWidth = window.screen.width;
+  // 前のタイマーがあったらキャンセル
+  clearTimeout(resizeTimer);
 
-  setSvgViewBoxSize(currentWindowWidth);
-  setSvgAnimation(currentWindowWidth);
-  setHistoryAnimation();
-  setContentsSlideAnimation();
+  // 0.2秒後に実行するタイマーをセット
+  resizeTimer = setTimeout(() => {
+    currentWindowWidth = window.screen.width;
+    setSvgViewBoxSize(currentWindowWidth);
+    setSvgAnimation(currentWindowWidth);
+    setHistoryAnimation();
+    setContentsSlideAnimation();
 
-  mm.add("(min-width: 1024px)", () => {
-    gsap.to(".history__progress-year-wrapper", {
-      clearProps: "transform",
+    mm.add("(min-width: 1024px)", () => {
+      gsap.to(".history__progress-year-wrapper", {
+        clearProps: "transform",
+      });
     });
-  });
+  }, 200);
 });
 
 /**
