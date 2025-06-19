@@ -158,29 +158,29 @@ class HistoryItem {
    * アイテム表示
    */
   show() {
-    this.showNumber();
-    this.showDescription();
-    this.showImage();
-    this.showTitle();
-    this.activeYear();
-    this.updateProgressBar();
+    this.#showNumber();
+    this.#showDescription();
+    this.#showImage();
+    this.#showTitle();
+    this.#activeYear();
+    this.#updateProgressBar();
   }
 
   /**
    * アイテム非表示
    */
   hide() {
-    this.hideNumber();
-    this.hideDescription();
-    this.hideImage();
-    this.hideTitle();
-    this.inactiveYear()
+    this.#hideNumber();
+    this.#hideDescription();
+    this.#hideImage();
+    this.#hideTitle();
+    this.#inactiveYear()
   }
 
   /**
    * プログレスバー更新
    */
-  updateProgressBar() {
+  #updateProgressBar() {
     const progressYearWrapper = document.querySelector(".history__progress-year-wrapper");
     const progressActiveBar = document.querySelector(".history__progress-active-bar");
     const startPercent = (100 / historyItems.length / 2);
@@ -212,14 +212,14 @@ class HistoryItem {
   /**
    * 年要素にクラス付与
    */
-  activeYear() {
+  #activeYear() {
     this.year.classList.add("js-large");
   }
 
   /**
    * 年要素からクラス削除
    */
-  inactiveYear() {
+  #inactiveYear() {
     this.year.classList.remove("js-large");
   }
 
@@ -230,7 +230,7 @@ class HistoryItem {
    * @param {*} targetElement
    * @param {*} gsapOptions
    */
-  _createAnimation(targetPropertyName, targetElement, gsapOptions) {
+  #createAnimation(targetPropertyName, targetElement, gsapOptions) {
     if (this[targetPropertyName]) {
       this[targetPropertyName].kill();
     }
@@ -240,8 +240,8 @@ class HistoryItem {
   /**
    * タイトル表示
    */
-  showTitle() {
-    this._createAnimation("currentTitleAnimation", this.title, {
+  #showTitle() {
+    this.#createAnimation("currentTitleAnimation", this.title, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 1,
@@ -251,8 +251,8 @@ class HistoryItem {
   /**
    * タイトル非表示
    */
-  hideTitle() {
-    this._createAnimation("currentTitleAnimation", this.title, {
+  #hideTitle() {
+    this.#createAnimation("currentTitleAnimation", this.title, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 0,
@@ -262,8 +262,8 @@ class HistoryItem {
   /**
    * 画像表示
    */
-  showImage() {
-    this._createAnimation("currentImageAnimation", this.image, {
+  #showImage() {
+    this.#createAnimation("currentImageAnimation", this.image, {
       duration: this.imageAnimationDuration,
       ease: this.imageAnimationEasing,
       autoAlpha: 1,
@@ -275,8 +275,8 @@ class HistoryItem {
   /**
    * 画像非表示
    */
-  hideImage() {
-    this._createAnimation("currentImageAnimation", this.image, {
+  #hideImage() {
+    this.#createAnimation("currentImageAnimation", this.image, {
       duration: this.imageAnimationDuration,
       ease: this.imageAnimationEasing,
       autoAlpha: 0,
@@ -288,8 +288,8 @@ class HistoryItem {
   /**
    * 序数表示
    */
-  showNumber() {
-    this._createAnimation("currentNumberAnimation", this.number, {
+  #showNumber() {
+    this.#createAnimation("currentNumberAnimation", this.number, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 1,
@@ -300,8 +300,8 @@ class HistoryItem {
   /**
    * 序数非表示
    */
-  hideNumber() {
-    this._createAnimation("currentNumberAnimation", this.number, {
+  #hideNumber() {
+    this.#createAnimation("currentNumberAnimation", this.number, {
       duration: 0,
       autoAlpha: 0,
       y: this.yMove,
@@ -311,8 +311,8 @@ class HistoryItem {
   /**
    * 説明文表示
    */
-  showDescription() {
-    this._createAnimation("currentDescriptionAnimation", this.description, {
+  #showDescription() {
+    this.#createAnimation("currentDescriptionAnimation", this.description, {
       duration: this.duration,
       ease: this.easing,
       autoAlpha: 1,
@@ -323,8 +323,8 @@ class HistoryItem {
   /**
    * 説明文非表示
    */
-  hideDescription() {
-    this._createAnimation("currentDescriptionAnimation", this.description, {
+  #hideDescription() {
+    this.#createAnimation("currentDescriptionAnimation", this.description, {
       duration: 0,
       autoAlpha: 0,
       y: this.yMove,
