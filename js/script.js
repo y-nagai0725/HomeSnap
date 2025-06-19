@@ -456,7 +456,7 @@ function startOpeningAnimation() {
     });
   }).add(() => {
     opening.style.opacity = 0;
-    opening.style.zIndex = 0;
+    opening.style.zIndex = -1;
   }, "<1");
 }
 
