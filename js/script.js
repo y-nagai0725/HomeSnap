@@ -388,6 +388,24 @@ let contentsSlideAnimation;
 let resizeTimer;
 
 /**
+ * 指定されたパスをアニメーションさせる
+ *
+ * @param {gsap.core.Timeline} timeline - GSAPのタイムライン
+ * @param {string} selector - パスのCSSセレクタ
+ * @param {number} duration - アニメーションの時間
+ * @param {string} position - タイムライン上の開始位置
+ */
+function animatePath(timeline, selector, duration, position) {
+  document.querySelectorAll(selector).forEach(path => {
+    const pathLength = path.getTotalLength();
+    timeline.to(path, {
+      duration: duration,
+      strokeDasharray: `${pathLength}, ${pathLength}`,
+    }, position);
+  });
+}
+
+/**
  * opアニメーションを開始
  */
 function startOpeningAnimation() {
@@ -409,45 +427,11 @@ function startOpeningAnimation() {
     },
   });
 
-  document.querySelectorAll(".outer-curve > path").forEach(path => {
-    const pathLength = path.getTotalLength();
-    tl.to(path, {
-      duration: 0.1,
-      strokeDasharray: `${pathLength}, ${pathLength}`,
-    }, "<0.1");
-  });
-
-  document.querySelectorAll(".line-left > path, .line-right > path").forEach(path => {
-    const pathLength = path.getTotalLength();
-    tl.to(path, {
-      duration: 0.01,
-      strokeDasharray: `${pathLength}, ${pathLength}`,
-    }, "<0.01");
-  });
-
-  document.querySelectorAll(".ordinal-number > path").forEach(path => {
-    const pathLength = path.getTotalLength();
-    tl.to(path, {
-      duration: 0.1,
-      strokeDasharray: `${pathLength}, ${pathLength}`,
-    }, "<0.1");
-  });
-
-  document.querySelectorAll(".ribbon > path").forEach(path => {
-    const pathLength = path.getTotalLength();
-    tl.to(path, {
-      duration: 0.1,
-      strokeDasharray: `${pathLength}, ${pathLength}`,
-    }, "<0.1");
-  });
-
-  document.querySelectorAll(".anniversary > path").forEach(path => {
-    const pathLength = path.getTotalLength();
-    tl.to(path, {
-      duration: 0.1,
-      strokeDasharray: `${pathLength}, ${pathLength}`,
-    }, "<0.1");
-  });
+  animatePath(tl, ".outer-curve > path", 0.1, "<0.1");
+  animatePath(tl, ".line-left > path, .line-right > path", 0.01, "<0.01");
+  animatePath(tl, ".ordinal-number > path", 0.1, "<0.1");
+  animatePath(tl, ".ribbon > path", 0.1, "<0.1");
+  animatePath(tl, ".anniversary > path", 0.1, "<0.1");
 
   //最後にfillする
   tl.add(() => {
