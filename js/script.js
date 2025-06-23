@@ -434,14 +434,14 @@ function startOpeningAnimation() {
   animatePath(tl, ".anniversary > path", 0.1, "<0.1");
 
   //最後にfillする
-  tl.add(() => {
-    document.querySelectorAll(".opening__logo path").forEach(path => {
-      path.style.fill = "#fff";
-    });
-  }).add(() => {
-    opening.style.opacity = 0;
-    opening.style.zIndex = -1;
-  }, "<1");
+  // tl.add(() => {
+  //   document.querySelectorAll(".opening__logo path").forEach(path => {
+  //     path.style.fill = "#fff";
+  //   });
+  // }).add(() => {
+  //   opening.style.opacity = 0;
+  //   opening.style.zIndex = -1;
+  // }, "<1");
 }
 
 /**

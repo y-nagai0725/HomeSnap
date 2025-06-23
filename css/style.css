@@ -461,6 +461,27 @@ img {
   height: 100%;
   z-index: 2;
 }
+.opening__shutter-wrapper .hane {
+  fill: #00aeef;
+  stroke: #222;
+  stroke-width: 4;
+  -webkit-transform-origin: 50% -50%;
+          transform-origin: 50% -50%;
+  -webkit-animation: hane 4s linear alternate infinite;
+          animation: hane 4s linear alternate infinite;
+}
+@-webkit-keyframes hane {
+  to {
+    -webkit-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+  }
+}
+@keyframes hane {
+  to {
+    -webkit-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+  }
+}
 
 .fv {
   width: 100%;
