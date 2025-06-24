@@ -35,18 +35,29 @@
     height: 100%;
     z-index: 2;
 
-    .hane {
-      fill: #00aeef;
-      stroke: #222;
+    .shutter-outer {
+      transform-origin: center;
+    }
+
+    @for $i from 2 through 6 {
+      #shutter-outer-#{$i} {
+        transform: rotate(60deg * ($i - 1));
+      }
+    }
+
+    #shutter-outer-0 {
+      transform: rotate(300deg);
+    }
+
+    .shutter-outer-wrapper {
+      clip-path: url(#left-rect-clip);
+    }
+
+    .shutter {
+      fill: gray;
+      stroke: $black;
       stroke-width: 4;
       transform-origin: 50% -50%;
-      animation: hane 4s linear alternate infinite;
-
-      @keyframes hane {
-        to {
-          transform: rotate(-60deg);
-        }
-      }
     }
   }
 }

@@ -427,11 +427,18 @@ function startOpeningAnimation() {
     },
   });
 
+  //ロゴ描画アニメーション
   animatePath(tl, ".outer-curve > path", 0.1, "<0.1");
   animatePath(tl, ".line-left > path, .line-right > path", 0.01, "<0.01");
   animatePath(tl, ".ordinal-number > path", 0.1, "<0.1");
   animatePath(tl, ".ribbon > path", 0.1, "<0.1");
   animatePath(tl, ".anniversary > path", 0.1, "<0.1");
+
+  //シャッターアニメーション
+  tl.to(".shutter", {
+    duration: 1,
+    rotate: -60,
+  });
 
   //最後にfillする
   // tl.add(() => {

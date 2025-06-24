@@ -461,26 +461,44 @@ img {
   height: 100%;
   z-index: 2;
 }
-.opening__shutter-wrapper .hane {
-  fill: #00aeef;
-  stroke: #222;
+.opening__shutter-wrapper .shutter-outer {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.opening__shutter-wrapper #shutter-outer-2 {
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+}
+.opening__shutter-wrapper #shutter-outer-3 {
+  -webkit-transform: rotate(120deg);
+          transform: rotate(120deg);
+}
+.opening__shutter-wrapper #shutter-outer-4 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.opening__shutter-wrapper #shutter-outer-5 {
+  -webkit-transform: rotate(240deg);
+          transform: rotate(240deg);
+}
+.opening__shutter-wrapper #shutter-outer-6 {
+  -webkit-transform: rotate(300deg);
+          transform: rotate(300deg);
+}
+.opening__shutter-wrapper #shutter-outer-0 {
+  -webkit-transform: rotate(300deg);
+          transform: rotate(300deg);
+}
+.opening__shutter-wrapper .shutter-outer-wrapper {
+  -webkit-clip-path: url(#left-rect-clip);
+          clip-path: url(#left-rect-clip);
+}
+.opening__shutter-wrapper .shutter {
+  fill: gray;
+  stroke: #443311;
   stroke-width: 4;
   -webkit-transform-origin: 50% -50%;
           transform-origin: 50% -50%;
-  -webkit-animation: hane 4s linear alternate infinite;
-          animation: hane 4s linear alternate infinite;
-}
-@-webkit-keyframes hane {
-  to {
-    -webkit-transform: rotate(-60deg);
-            transform: rotate(-60deg);
-  }
-}
-@keyframes hane {
-  to {
-    -webkit-transform: rotate(-60deg);
-            transform: rotate(-60deg);
-  }
 }
 
 .fv {
