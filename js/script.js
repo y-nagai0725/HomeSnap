@@ -434,21 +434,28 @@ function startOpeningAnimation() {
   animatePath(tl, ".ribbon > path", 0.1, "<0.1");
   animatePath(tl, ".anniversary > path", 0.1, "<0.1");
 
-  //シャッターアニメーション
-  tl.to(".shutter", {
-    duration: 1,
-    rotate: -60,
+  //最後にfillする
+  tl.add(() => {
+    document.querySelectorAll(".opening__logo path").forEach(path => {
+      path.style.fill = "#fff";
+    });
   });
 
-  //最後にfillする
-  // tl.add(() => {
-  //   document.querySelectorAll(".opening__logo path").forEach(path => {
-  //     path.style.fill = "#fff";
-  //   });
-  // }).add(() => {
-  //   opening.style.opacity = 0;
-  //   opening.style.zIndex = -1;
-  // }, "<1");
+  //シャッターアニメーション
+  tl.fromTo(".shutter", {
+    rotate: -60,
+  }, {
+    duration: 0.8,
+    rotate: 0,
+    repeat: 1,
+    yoyo: true,
+  });
+
+  //
+  tl.add(() => {
+    opening.style.opacity = 0;
+    opening.style.zIndex = -1;
+  }, "<1");
 }
 
 /**
