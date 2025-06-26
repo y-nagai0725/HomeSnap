@@ -412,6 +412,7 @@ function startOpeningAnimation() {
   const opening = document.querySelector(".opening");
   const logo = document.querySelector(".opening__logo");
   const pathList = document.querySelectorAll(".opening__logo path");
+  const logoFillColor = "#ffffff";
 
   //pathの初期化
   pathList.forEach(path => {
@@ -419,43 +420,46 @@ function startOpeningAnimation() {
     path.style.strokeDasharray = `0, ${pathLength}`;
   });
 
-  logo.style.opacity = 1;
-
+  //タイムライン
   const tl = gsap.timeline({
     defaults: {
       ease: "none",
     },
   });
 
-  //ロゴ描画アニメーション
+  //ロゴ表示
+  logo.style.opacity = 1;
+
+  //ロゴのstroke描画
   animatePath(tl, ".outer-curve > path", 0.1, "<0.1");
   animatePath(tl, ".line-left > path, .line-right > path", 0.01, "<0.01");
-  animatePath(tl, ".ordinal-number > path", 0.1, "<0.1");
+  animatePath(tl, ".ordinal-number > path", 0.05, "<0.05");
   animatePath(tl, ".ribbon > path", 0.1, "<0.1");
-  animatePath(tl, ".anniversary > path", 0.1, "<0.1");
+  animatePath(tl, ".anniversary > path", 0.05, "<0.05");
 
-  //最後にfillする
-  tl.add(() => {
-    document.querySelectorAll(".opening__logo path").forEach(path => {
-      path.style.fill = "#fff";
-    });
+  //ロゴのfill設定
+  tl.to(".opening__logo path", {
+    duration: 0.4,
+    fill: logoFillColor,
   });
 
   //シャッターアニメーション
   tl.fromTo(".shutter", {
     rotate: -60,
+    opacity: 1,
+    transformOrigin: "50% -50%",
   }, {
-    duration: 0.8,
-    rotate: 0,
-    repeat: 1,
-    yoyo: true,
+    duration: 1.0,
+    keyframes: {
+      rotate: [-60, 0, -60],
+    },
   });
 
-  //
-  tl.add(() => {
-    opening.style.opacity = 0;
-    opening.style.zIndex = -1;
-  }, "<1");
+  //opening要素を非表示にする
+  tl.to(opening, {
+    duration: 0.4,
+    autoAlpha: 0,
+  }, "<0.66");
 }
 
 /**
