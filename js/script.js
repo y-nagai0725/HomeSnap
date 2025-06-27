@@ -388,12 +388,21 @@ let contentsSlideAnimation;
 let resizeTimer;
 
 /**
+ * イベント処理禁止用
+ *
+ * @param {*} e
+ */
+function noScroll(e) {
+  e.preventDefault();
+}
+
+/**
  * 指定されたパスをアニメーションさせる
  *
- * @param {gsap.core.Timeline} timeline - GSAPのタイムライン
- * @param {string} selector - パスのCSSセレクタ
- * @param {number} duration - アニメーションの時間
- * @param {string} position - タイムライン上の開始位置
+ * @param {gsap.core.Timeline} timeline GSAPのタイムライン
+ * @param {string} selector パスのCSSセレクタ
+ * @param {number} duration アニメーションの時間
+ * @param {string} position タイムライン上の開始位置
  */
 function animatePath(timeline, selector, duration, position) {
   document.querySelectorAll(selector).forEach(path => {
@@ -413,6 +422,10 @@ function startOpeningAnimation() {
   const logo = document.querySelector(".opening__logo");
   const pathList = document.querySelectorAll(".opening__logo path");
   const logoFillColor = "#ffffff";
+
+  //opアニメーション中はスクロール禁止
+  document.addEventListener('touchmove', noScroll, { passive: false });
+  document.addEventListener('wheel', noScroll, { passive: false });
 
   //pathの初期化
   pathList.forEach(path => {
@@ -460,6 +473,16 @@ function startOpeningAnimation() {
     duration: 0.4,
     autoAlpha: 0,
   }, "<0.66");
+
+  //opアニメーション終了後の処理
+  tl.add(() => {
+    //FV更新処理開始
+    changeFvImage();
+
+    //スクロール禁止を解除
+    document.removeEventListener('touchmove', noScroll);
+    document.removeEventListener('wheel', noScroll);
+  }, "<0.2");
 }
 
 /**
@@ -987,7 +1010,6 @@ window.addEventListener("resize", () => {
  * 初期実行処理
  */
 function init() {
-  changeFvImage();
   setSvgViewBoxSize(currentWindowWidth);
   setSvgAnimation(currentWindowWidth);
   setHistoryItem();

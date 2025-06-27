@@ -490,7 +490,7 @@ img {
           clip-path: url(#left-rect-clip);
 }
 .opening__shutter-wrapper .shutter {
-  fill: gray;
+  fill: #6b6b6b;
   stroke: #443311;
   stroke-width: 4;
   -webkit-transform-origin: 50% -50%;
