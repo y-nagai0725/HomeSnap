@@ -8,6 +8,7 @@
 - [使用技術](#使用技術)
 - [使用フォント](#使用フォント)
 - [デザインカンプ](#デザインカンプ)
+- [OPアニメーション](#opアニメーション)
 - [FV](#fv)
 - [Historyセクション](#historyセクション)
 - [Contentsセクション](#contentsセクション)
@@ -38,6 +39,11 @@
 
 ## デザインカンプ
 [Figmaページ（閲覧のみ可能です）](https://www.figma.com/design/O07zILaVA9NIQKxaahI3ZX/HomeSnap?node-id=0-1&t=7doAIWqjAzAALk0M-1)
+
+## OPアニメーション
+![Image](https://github.com/user-attachments/assets/0dba2a4f-6873-4498-9898-68c8990c0841)
+
+svgのロゴの描画、カメラのシャッター風のアニメーションを**GSAP**を使用して作成しました。
 
 ## FV
 ![Image](https://github.com/user-attachments/assets/63c9d5ea-d728-40c7-9bbb-c371dd0dd0b5)
